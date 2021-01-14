@@ -7,19 +7,25 @@
 
 import Foundation
 
-struct Photo {
+struct Photo: Codable {
     let id: String
     let descritpion: String
+    let urls: Url
     let user: User
 }
 
-struct  User {
+struct User: Codable {
     let id: String
     let name: String
     let instagram: String
     
     enum CodingKeys: String, CodingKey {
         case instagram = "instagram_username"
-        case id, case name
+        case id, name
     }
+}
+
+struct Url: Codable {
+    let full: String
+    let thumb: String
 }

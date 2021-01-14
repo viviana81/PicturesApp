@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,9 @@
 		B96CA0A925B04C4B002D262A /* PhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B96CA0A725B04C4B002D262A /* PhotoCollectionViewCell.xib */; };
 		B96CA0AD25B04C70002D262A /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96CA0AC25B04C70002D262A /* Reusable.swift */; };
 		B96CA0B025B04EFB002D262A /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96CA0AF25B04EFB002D262A /* Models.swift */; };
+		B96CA0B525B0826A002D262A /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96CA0B425B0826A002D262A /* Services.swift */; };
+		B96CA0B825B084DC002D262A /* PicturesApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96CA0B725B084DC002D262A /* PicturesApi.swift */; };
+		B96CA0C125B0860B002D262A /* ApiServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96CA0C025B0860B002D262A /* ApiServices.swift */; };
 		B9E68FD625B041C50028EAE5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E68FD525B041C50028EAE5 /* AppDelegate.swift */; };
 		B9E68FD825B041C50028EAE5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E68FD725B041C50028EAE5 /* SceneDelegate.swift */; };
 		B9E68FDA25B041C50028EAE5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E68FD925B041C50028EAE5 /* HomeViewController.swift */; };
@@ -29,6 +32,9 @@
 		B96CA0A725B04C4B002D262A /* PhotoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoCollectionViewCell.xib; sourceTree = "<group>"; };
 		B96CA0AC25B04C70002D262A /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		B96CA0AF25B04EFB002D262A /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		B96CA0B425B0826A002D262A /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
+		B96CA0B725B084DC002D262A /* PicturesApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicturesApi.swift; sourceTree = "<group>"; };
+		B96CA0C025B0860B002D262A /* ApiServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiServices.swift; sourceTree = "<group>"; };
 		B9E68FD225B041C50028EAE5 /* PicturesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PicturesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9E68FD525B041C50028EAE5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B9E68FD725B041C50028EAE5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -90,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				B96CA0AC25B04C70002D262A /* Reusable.swift */,
+				B96CA0B425B0826A002D262A /* Services.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -100,6 +107,15 @@
 				B96CA0AF25B04EFB002D262A /* Models.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		B96CA0B325B08241002D262A /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				B96CA0B725B084DC002D262A /* PicturesApi.swift */,
+				B96CA0C025B0860B002D262A /* ApiServices.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		B9E68FC925B041C40028EAE5 = {
@@ -128,6 +144,7 @@
 				B96CA0AB25B04C5A002D262A /* Protocols */,
 				B9E68FEA25B041D90028EAE5 /* Resources */,
 				B9E68FEC25B041EA0028EAE5 /* Scene */,
+				B96CA0B325B08241002D262A /* Services */,
 				B9E68FED25B041FE0028EAE5 /* Storyboard */,
 			);
 			path = PicturesApp;
@@ -179,6 +196,7 @@
 				B9E68FCE25B041C50028EAE5 /* Sources */,
 				B9E68FCF25B041C50028EAE5 /* Frameworks */,
 				B9E68FD025B041C50028EAE5 /* Resources */,
+				A182E01164D781989FCD4EC6 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -258,6 +276,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		A182E01164D781989FCD4EC6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PicturesApp/Pods-PicturesApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PicturesApp/Pods-PicturesApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PicturesApp/Pods-PicturesApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		B96CA09D25B044FF002D262A /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -286,7 +321,10 @@
 				B9E68FDA25B041C50028EAE5 /* HomeViewController.swift in Sources */,
 				B96CA0A825B04C4B002D262A /* PhotoCollectionViewCell.swift in Sources */,
 				B9E68FD625B041C50028EAE5 /* AppDelegate.swift in Sources */,
+				B96CA0B525B0826A002D262A /* Services.swift in Sources */,
 				B96CA0B025B04EFB002D262A /* Models.swift in Sources */,
+				B96CA0B825B084DC002D262A /* PicturesApi.swift in Sources */,
+				B96CA0C125B0860B002D262A /* ApiServices.swift in Sources */,
 				B9E68FD825B041C50028EAE5 /* SceneDelegate.swift in Sources */,
 				B96CA0AD25B04C70002D262A /* Reusable.swift in Sources */,
 			);
