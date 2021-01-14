@@ -6,5 +6,6 @@ target 'PicturesApp' do
   use_frameworks!
 
   # Pods for PicturesApp
+   pod 'SwiftLint'
 
 end
