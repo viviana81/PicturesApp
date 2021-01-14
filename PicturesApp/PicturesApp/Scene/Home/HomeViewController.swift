@@ -11,6 +11,7 @@ class HomeViewController: UIViewController {
     
     lazy private var photoCollection: UICollectionView = {
         let collection = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
+       // collection.dataSource = self
         collection.register(PhotoCollectionViewCell.self)
         return collection
     }()
@@ -42,3 +43,13 @@ class HomeViewController: UIViewController {
         return layout
     }
 }
+
+/*extension HomeViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+    }
+} */
