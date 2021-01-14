@@ -16,6 +16,9 @@
 		B96CA0B525B0826A002D262A /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96CA0B425B0826A002D262A /* Services.swift */; };
 		B96CA0B825B084DC002D262A /* PicturesApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96CA0B725B084DC002D262A /* PicturesApi.swift */; };
 		B96CA0C125B0860B002D262A /* ApiServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96CA0C025B0860B002D262A /* ApiServices.swift */; };
+		B96CA0C525B09985002D262A /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96CA0C425B09985002D262A /* AppCoordinator.swift */; };
+		B96CA0C825B09996002D262A /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96CA0C725B09996002D262A /* Coordinator.swift */; };
+		B96CA0CB25B09AFF002D262A /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96CA0CA25B09AFF002D262A /* HomeCoordinator.swift */; };
 		B9E68FD625B041C50028EAE5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E68FD525B041C50028EAE5 /* AppDelegate.swift */; };
 		B9E68FD825B041C50028EAE5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E68FD725B041C50028EAE5 /* SceneDelegate.swift */; };
 		B9E68FDA25B041C50028EAE5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E68FD925B041C50028EAE5 /* HomeViewController.swift */; };
@@ -35,6 +38,9 @@
 		B96CA0B425B0826A002D262A /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
 		B96CA0B725B084DC002D262A /* PicturesApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicturesApi.swift; sourceTree = "<group>"; };
 		B96CA0C025B0860B002D262A /* ApiServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiServices.swift; sourceTree = "<group>"; };
+		B96CA0C425B09985002D262A /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		B96CA0C725B09996002D262A /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		B96CA0CA25B09AFF002D262A /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		B9E68FD225B041C50028EAE5 /* PicturesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PicturesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9E68FD525B041C50028EAE5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B9E68FD725B041C50028EAE5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -76,9 +82,10 @@
 		B96CA09F25B04709002D262A /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				B96CA0A525B04C2C002D262A /* PhotoCell */,
 				B9E68FD925B041C50028EAE5 /* HomeViewController.swift */,
 				B96CA0A225B0482F002D262A /* HomeViewController.xib */,
+				B96CA0CA25B09AFF002D262A /* HomeCoordinator.swift */,
+				B96CA0A525B04C2C002D262A /* PhotoCell */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -97,6 +104,7 @@
 			children = (
 				B96CA0AC25B04C70002D262A /* Reusable.swift */,
 				B96CA0B425B0826A002D262A /* Services.swift */,
+				B96CA0C725B09996002D262A /* Coordinator.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -116,6 +124,14 @@
 				B96CA0C025B0860B002D262A /* ApiServices.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		B96CA0C325B0996C002D262A /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				B96CA0C425B09985002D262A /* AppCoordinator.swift */,
+			);
+			path = Coordinators;
 			sourceTree = "<group>";
 		};
 		B9E68FC925B041C40028EAE5 = {
@@ -140,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				B9E68FEB25B041E30028EAE5 /* Application */,
+				B96CA0C325B0996C002D262A /* Coordinators */,
 				B96CA0B225B04F0F002D262A /* Models */,
 				B96CA0AB25B04C5A002D262A /* Protocols */,
 				B9E68FEA25B041D90028EAE5 /* Resources */,
@@ -320,9 +337,12 @@
 			files = (
 				B9E68FDA25B041C50028EAE5 /* HomeViewController.swift in Sources */,
 				B96CA0A825B04C4B002D262A /* PhotoCollectionViewCell.swift in Sources */,
+				B96CA0C525B09985002D262A /* AppCoordinator.swift in Sources */,
 				B9E68FD625B041C50028EAE5 /* AppDelegate.swift in Sources */,
 				B96CA0B525B0826A002D262A /* Services.swift in Sources */,
+				B96CA0CB25B09AFF002D262A /* HomeCoordinator.swift in Sources */,
 				B96CA0B025B04EFB002D262A /* Models.swift in Sources */,
+				B96CA0C825B09996002D262A /* Coordinator.swift in Sources */,
 				B96CA0B825B084DC002D262A /* PicturesApi.swift in Sources */,
 				B96CA0C125B0860B002D262A /* ApiServices.swift in Sources */,
 				B9E68FD825B041C50028EAE5 /* SceneDelegate.swift in Sources */,

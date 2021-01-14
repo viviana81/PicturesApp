@@ -11,7 +11,6 @@ class PhotoCollectionViewCell: UICollectionViewCell, Reusable {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-       
+    
     }
 }

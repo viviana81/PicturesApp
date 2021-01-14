@@ -42,6 +42,7 @@ class HomeViewController: UIViewController {
         let layout = UICollectionViewCompositionalLayout(section: section)
         return layout
     }
+    
 }
 
 /*extension HomeViewController: UICollectionViewDataSource {

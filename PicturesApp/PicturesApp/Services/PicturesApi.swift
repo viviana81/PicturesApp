@@ -42,7 +42,7 @@ extension PicturesApi: TargetType {
         }
     }
     
-    var headers: [String : String]? {
+    var headers: [String: String]? {
         return [:]
     }
     
@@ -50,4 +50,3 @@ extension PicturesApi: TargetType {
         return .successCodes
     }
 }
-
