@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		38F9086F4E3A13DEF029AC88 /* Pods_PicturesApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EA790C824F8ACAA5A075942 /* Pods_PicturesApp.framework */; };
 		B96CA0A325B0482F002D262A /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B96CA0A225B0482F002D262A /* HomeViewController.xib */; };
+		B96CA0A825B04C4B002D262A /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96CA0A625B04C4B002D262A /* PhotoCollectionViewCell.swift */; };
+		B96CA0A925B04C4B002D262A /* PhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B96CA0A725B04C4B002D262A /* PhotoCollectionViewCell.xib */; };
+		B96CA0AD25B04C70002D262A /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96CA0AC25B04C70002D262A /* Reusable.swift */; };
 		B9E68FD625B041C50028EAE5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E68FD525B041C50028EAE5 /* AppDelegate.swift */; };
 		B9E68FD825B041C50028EAE5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E68FD725B041C50028EAE5 /* SceneDelegate.swift */; };
 		B9E68FDA25B041C50028EAE5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E68FD925B041C50028EAE5 /* HomeViewController.swift */; };
@@ -21,6 +24,9 @@
 		4EA790C824F8ACAA5A075942 /* Pods_PicturesApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PicturesApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BBAFDAC323917F1B16E2B4E /* Pods-PicturesApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PicturesApp.release.xcconfig"; path = "Target Support Files/Pods-PicturesApp/Pods-PicturesApp.release.xcconfig"; sourceTree = "<group>"; };
 		B96CA0A225B0482F002D262A /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
+		B96CA0A625B04C4B002D262A /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		B96CA0A725B04C4B002D262A /* PhotoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoCollectionViewCell.xib; sourceTree = "<group>"; };
+		B96CA0AC25B04C70002D262A /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		B9E68FD225B041C50028EAE5 /* PicturesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PicturesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9E68FD525B041C50028EAE5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B9E68FD725B041C50028EAE5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -62,10 +68,28 @@
 		B96CA09F25B04709002D262A /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				B96CA0A525B04C2C002D262A /* PhotoCell */,
 				B9E68FD925B041C50028EAE5 /* HomeViewController.swift */,
 				B96CA0A225B0482F002D262A /* HomeViewController.xib */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		B96CA0A525B04C2C002D262A /* PhotoCell */ = {
+			isa = PBXGroup;
+			children = (
+				B96CA0A625B04C4B002D262A /* PhotoCollectionViewCell.swift */,
+				B96CA0A725B04C4B002D262A /* PhotoCollectionViewCell.xib */,
+			);
+			path = PhotoCell;
+			sourceTree = "<group>";
+		};
+		B96CA0AB25B04C5A002D262A /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				B96CA0AC25B04C70002D262A /* Reusable.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		B9E68FC925B041C40028EAE5 = {
@@ -89,6 +113,7 @@
 		B9E68FD425B041C50028EAE5 /* PicturesApp */ = {
 			isa = PBXGroup;
 			children = (
+				B96CA0AB25B04C5A002D262A /* Protocols */,
 				B9E68FEB25B041E30028EAE5 /* Application */,
 				B9E68FEA25B041D90028EAE5 /* Resources */,
 				B9E68FEC25B041EA0028EAE5 /* Scene */,
@@ -191,6 +216,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B9E68FE225B041CA0028EAE5 /* LaunchScreen.storyboard in Resources */,
+				B96CA0A925B04C4B002D262A /* PhotoCollectionViewCell.xib in Resources */,
 				B9E68FDF25B041CA0028EAE5 /* Assets.xcassets in Resources */,
 				B96CA0A325B0482F002D262A /* HomeViewController.xib in Resources */,
 			);
@@ -247,8 +273,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B9E68FDA25B041C50028EAE5 /* HomeViewController.swift in Sources */,
+				B96CA0A825B04C4B002D262A /* PhotoCollectionViewCell.swift in Sources */,
 				B9E68FD625B041C50028EAE5 /* AppDelegate.swift in Sources */,
 				B9E68FD825B041C50028EAE5 /* SceneDelegate.swift in Sources */,
+				B96CA0AD25B04C70002D262A /* Reusable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
