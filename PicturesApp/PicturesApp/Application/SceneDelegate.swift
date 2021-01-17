@@ -23,7 +23,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.appCoordinator = appCoordinator
         self.window = window
         
-        
         window.makeKeyAndVisible()
     }
 }

@@ -7,18 +7,35 @@
 
 import UIKit
 
+protocol HomeViewControllerDelegate {
+    func getPhotos()
+}
+
 class HomeViewController: UIViewController {
-    
+    // MARK: - Vars
     lazy private var photoCollection: UICollectionView = {
         let collection = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
-       // collection.dataSource = self
+        collection.dataSource = self
+        collection.delegate = self
         collection.register(PhotoCollectionViewCell.self)
         return collection
     }()
+    var photos: [Photo] = [] {
+        didSet {
+            photoCollection.reloadData()
+        }
+    }
+     var delegate: HomeViewControllerDelegate?
+     
+    // MARK: - Lifecycle viewcontroller
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        photoCollection.pin(to: view)
+        delegate?.getPhotos()
     }
+    
+    // MARK: - Actions
     
     func createLayout() -> UICollectionViewLayout {
         
@@ -45,12 +62,23 @@ class HomeViewController: UIViewController {
     
 }
 
-/*extension HomeViewController: UICollectionViewDataSource {
+extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
+        return photos.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
+        let cell: PhotoCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
+        let photo = photos[indexPath.item]
+        cell.configure(withPhoto: photo)
+        return cell
     }
-} */
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        
+        if indexPath.item == photos.count-1 {
+          
+            delegate?.getPhotos()
+        }
+    }
+}

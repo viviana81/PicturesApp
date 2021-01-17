@@ -9,5 +9,5 @@ import Foundation
 
 protocol Services {
     
-    func getPhotos(completion: @escaping([Photo]?, Error?) -> Void)
+    func getPhotos(page: Int, completion: @escaping([Photo]?, Error?) -> Void)
 }

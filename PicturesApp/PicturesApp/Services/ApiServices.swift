@@ -18,8 +18,8 @@ struct ApiServices: Services {
         decoder = JSONDecoder()
     }
     
-    func getPhotos(completion: @escaping ([Photo]?, Error?) -> Void) {
-        provider.request(.getPhotos) { result in
+    func getPhotos(page: Int, completion: @escaping ([Photo]?, Error?) -> Void) {
+        provider.request(.getPhotos(page: page)) { result in
             switch result {
             case .success(let response):
                 let photos = try? decoder.decode([Photo].self, from: response.data)

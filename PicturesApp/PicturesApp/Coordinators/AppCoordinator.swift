@@ -18,10 +18,25 @@ class AppCoordinator: Coordinator {
     }
     
     func start() {
-        coordinators.removeAll()
+        let tabBarController = UITabBarController()
+        tabBarController.tabBar.tintColor = .gray
+        tabBarController.tabBar.barTintColor = .white
         
         let homeCoordinator = HomeCoordinator(window: window, services: services)
+        let topicsCoordinator = TopicsCoordinator(window: window, services: services)
+        let searchCoordinator = SearchCoordinator(window: window, services: services)
+        
         coordinators.append(homeCoordinator)
-        homeCoordinator.start()
+        coordinators.append(topicsCoordinator)
+        coordinators.append(searchCoordinator)
+        
+        tabBarController.viewControllers = [
+            homeCoordinator.navigation,
+            topicsCoordinator.navigation,
+            searchCoordinator.navigation
+        ]
+        
+        coordinators.forEach { $0.start() } // lanciamo tutti gli start dei coordinators
+        window.rootViewController = tabBarController
     }
 }

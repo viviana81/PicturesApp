@@ -9,7 +9,7 @@ import UIKit
 import Moya
 
 enum PicturesApi {
-    case getPhotos
+    case getPhotos(page: Int)
 }
 
 extension PicturesApi: TargetType {
@@ -37,13 +37,13 @@ extension PicturesApi: TargetType {
     
     var task: Task {
         switch self {
-        case .getPhotos:
-            return .requestPlain
+        case .getPhotos(let page):
+            return .requestParameters(parameters: ["page": page], encoding: URLEncoding.default)
         }
     }
     
     var headers: [String: String]? {
-        return [:]
+        return ["Authorization": "Client-ID bXdSj1vu0gOXPwaT7vDBDT1mWZF7CE9CYHHsqfj1O9k"]
     }
     
     var validationType: ValidationType {

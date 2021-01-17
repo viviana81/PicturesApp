@@ -13,16 +13,30 @@ class HomeCoordinator: Coordinator {
     let navigation: UINavigationController
     let homeViewController: HomeViewController
     let services: Services
+    var page = 1
     
     init(window: UIWindow, services: Services) {
         self.services = services
         self.window = window
         homeViewController = HomeViewController()
         navigation = UINavigationController(rootViewController: homeViewController)
+        navigation.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "house"), tag: 0)
     }
     
     func start() {
+        homeViewController.delegate = self
         window.rootViewController = navigation
         window.makeKeyAndVisible()
+    }
+}
+extension HomeCoordinator: HomeViewControllerDelegate {
+    
+    func getPhotos() {
+        services.getPhotos(page: page) { [ weak self ] (photos, error) in
+            self?.page += 1
+            if let photos = photos {
+                self?.homeViewController.photos.append(contentsOf: photos)
+            } 
+        }
     }
 }

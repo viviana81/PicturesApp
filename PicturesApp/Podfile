@@ -8,6 +8,7 @@ target 'PicturesApp' do
   # Pods for PicturesApp
    pod 'SwiftLint'
    pod 'Moya', '~> 13.0'
+   pod 'Kingfisher'
 
 end
 
