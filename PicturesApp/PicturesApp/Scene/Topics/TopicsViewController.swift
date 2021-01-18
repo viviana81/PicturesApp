@@ -16,8 +16,10 @@ class TopicsViewController: UIViewController {
     // MARK: - Vars
     lazy var topicsCollection: UICollectionView = {
         let collection = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
-        collection.register(TopicsCollectionViewCell.self)
+        collection.register(PhotoCollectionViewCell.self)
+        collection.register(HeaderView.self, forSupplementaryViewOfKind: HeaderView.kind, withReuseIdentifier: HeaderView.reuseIdentifier)
         collection.dataSource = self
+        collection.delegate = self
         return collection
     }()
     
@@ -26,6 +28,7 @@ class TopicsViewController: UIViewController {
             topicsCollection.reloadData()
         }
     }
+    var sections = 0
     
     var delegate: TopicsViewControllerDelegate?
     
@@ -36,6 +39,7 @@ class TopicsViewController: UIViewController {
 
         topicsCollection.pin(to: view)
         delegate?.getTopics()
+        
     }
     
     // MARK: - Actions
@@ -47,33 +51,66 @@ class TopicsViewController: UIViewController {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
                                               heightDimension: .fractionalHeight(1.0))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        item.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                               heightDimension: .absolute(150))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.50),
+                                               heightDimension: .absolute(200))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 1)
+        group.contentInsets = NSDirectionalEdgeInsets(
+            top: 5,
+            leading: 10,
+            bottom: 0,
+            trailing: 10)
         
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize,
-                                                       subitem: item, count: 2)
-        
-        group.interItemSpacing = .fixed(CGFloat(10))
+        let headerSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .estimated(44))
+        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: headerSize,
+            elementKind: HeaderView.kind,
+            alignment: .top)
         
         let section = NSCollectionLayoutSection(group: group)
+        section.orthogonalScrollingBehavior = .groupPaging
+        section.boundarySupplementaryItems = [sectionHeader]
         
         let layout = UICollectionViewCompositionalLayout(section: section)
         return layout
     }
 }
 
-extension TopicsViewController: UICollectionViewDataSource {
+extension TopicsViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return topics.count
     }
     
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return topics[section].previewPhotos.count
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell: TopicsCollectionViewCell = topicsCollection.dequeueReusableCell(for: indexPath)
-        let topic = topics[indexPath.item]
-        cell.configure(withTopic: topic)
+        let cell: PhotoCollectionViewCell = topicsCollection.dequeueReusableCell(for: indexPath)
+        let photo = topics[indexPath.section].previewPhotos[indexPath.item]
+        cell.configure(withPhoto: photo)
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if indexPath.item == topics.count-1 {
+            delegate?.getTopics()
+        }
+    }
+
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        guard let supplementaryView = collectionView.dequeueReusableSupplementaryView(
+                ofKind: kind,
+                withReuseIdentifier: HeaderView.reuseIdentifier,
+                for: indexPath) as? HeaderView else {
+            fatalError("Cannot create header view")
+        }
+        
+        supplementaryView.label.text = topics[indexPath.section].title
+        
+        return supplementaryView
     }
 }

@@ -11,7 +11,7 @@ struct Photo: Codable {
     let id: String
     let description: String?
     let urls: Url
-    let user: User
+    let user: User?
 }
 
 struct User: Codable {
@@ -33,15 +33,10 @@ struct Url: Codable {
 struct Topic: Codable {
     let id: String
     let title: String
-    let previewPhotos: [PreviewPhoto]
+    let previewPhotos: [Photo]
     
     enum CodingKeys: String, CodingKey {
         case previewPhotos = "preview_photos"
         case id, title
     }
-}
-
-struct PreviewPhoto: Codable {
-    let id: String
-    let urls: Url
 }

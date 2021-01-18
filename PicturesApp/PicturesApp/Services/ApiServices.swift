@@ -30,8 +30,8 @@ struct ApiServices: Services {
         }
     }
     
-    func getTopics(completion: @escaping ([Topic]?, Error?) -> Void) {
-        provider.request(.getTopics) { result in
+    func getTopics(page: Int, completion: @escaping ([Topic]?, Error?) -> Void) {
+        provider.request(.getTopics(page: page)) { result in
             switch result {
             case .success(let response):
                 let topics = try? decoder.decode([Topic].self, from: response.data)

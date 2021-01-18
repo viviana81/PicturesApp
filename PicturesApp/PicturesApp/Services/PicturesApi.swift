@@ -10,7 +10,7 @@ import Moya
 
 enum PicturesApi {
     case getPhotos(page: Int)
-    case getTopics
+    case getTopics(page: Int)
 }
 
 extension PicturesApi: TargetType {
@@ -40,10 +40,9 @@ extension PicturesApi: TargetType {
     
     var task: Task {
         switch self {
-        case .getPhotos(let page):
+        case .getPhotos(let page), .getTopics(let page):
             return .requestParameters(parameters: ["page": page], encoding: URLEncoding.default)
-        case .getTopics:
-            return .requestPlain
+
         }
     }
     

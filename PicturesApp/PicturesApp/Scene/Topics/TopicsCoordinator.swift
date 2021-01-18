@@ -13,6 +13,7 @@ class TopicsCoordinator: Coordinator {
     let navigation: UINavigationController
     let topicsViewController: TopicsViewController
     let services: Services
+    var page = 1
     
     init(window: UIWindow, services: Services) {
         self.services = services
@@ -29,9 +30,10 @@ class TopicsCoordinator: Coordinator {
 
 extension TopicsCoordinator: TopicsViewControllerDelegate {
     func getTopics() {
-        services.getTopics { [ weak self ] topics, error in
+        services.getTopics(page: page) { [ weak self ] topics, error in
+            self?.page += 1
             if let topics = topics {
-                self?.topicsViewController.topics = topics
+                self?.topicsViewController.topics.append(contentsOf: topics)
             } else {
                 
             }
