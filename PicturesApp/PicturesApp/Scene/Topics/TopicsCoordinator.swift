@@ -23,6 +23,18 @@ class TopicsCoordinator: Coordinator {
     }
     
     func start() {
-        
+        topicsViewController.delegate = self
+    }
+}
+
+extension TopicsCoordinator: TopicsViewControllerDelegate {
+    func getTopics() {
+        services.getTopics { [ weak self ] topics, error in
+            if let topics = topics {
+                self?.topicsViewController.topics = topics
+            } else {
+                
+            }
+        }
     }
 }

@@ -29,3 +29,19 @@ struct Url: Codable {
     let full: String
     let thumb: String
 }
+
+struct Topic: Codable {
+    let id: String
+    let title: String
+    let previewPhotos: [PreviewPhoto]
+    
+    enum CodingKeys: String, CodingKey {
+        case previewPhotos = "preview_photos"
+        case id, title
+    }
+}
+
+struct PreviewPhoto: Codable {
+    let id: String
+    let urls: Url
+}
