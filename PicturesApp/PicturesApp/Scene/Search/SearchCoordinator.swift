@@ -31,9 +31,14 @@ class SearchCoordinator: Coordinator {
 
 extension SearchCoordinator: SearchViewControllerDelegate {
     func searchPhoto(withQuery query: String) {
+        searchViewController.status = .searching
         services.search(query: query) { [weak self] searchedResp, error in
             if let searchedResp = searchedResp {
-                self?.searchViewController.photos = searchedResp.results
+                self?.searchViewController.status = .searched(photos: searchedResp.results)
+            } else {
+                if let error = error {
+                    self?.searchViewController.status = .error(error: error)
+                }
             }
         }
     }

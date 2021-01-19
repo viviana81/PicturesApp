@@ -9,6 +9,7 @@ import UIKit
 
 protocol HomeViewControllerDelegate: class {
     func getPhotos()
+    func onPhotoTap(photo: Photo)
 }
 
 class HomeViewController: UIViewController {
@@ -30,7 +31,7 @@ class HomeViewController: UIViewController {
                 loadingView.isHidden = true
                 self.photos = photos
             case .error(let error):
-                print(error)
+                showAlert(andMessage: error.localizedDescription)
             }
         }
     }
@@ -113,5 +114,11 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
           
             delegate?.getPhotos()
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let photo = photos[indexPath.item]
+        delegate?.onPhotoTap(photo: photo)
+        
     }
 }

@@ -29,7 +29,7 @@ class HomeCoordinator: Coordinator {
     }
 }
 extension HomeCoordinator: HomeViewControllerDelegate {
-    
+   
     func getPhotos() {
         services.getPhotos(page: page) { [ weak self ] (photos, error) in
             self?.page += 1
@@ -37,9 +37,14 @@ extension HomeCoordinator: HomeViewControllerDelegate {
                 self?.homeViewController.photos.append(contentsOf: photos)
             } else {
                 if let error = error {
-                    print(error)
+                    self?.homeViewController.showAlert(andMessage: error.localizedDescription)
                 }
             }
         }
+    }
+    
+    func onPhotoTap(photo: Photo) {
+        let detail = DetailViewController(photo: photo)
+        navigation.present(detail, animated: true, completion: nil)
     }
 }

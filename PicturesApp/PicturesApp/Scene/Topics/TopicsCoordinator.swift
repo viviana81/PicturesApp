@@ -36,7 +36,7 @@ extension TopicsCoordinator: TopicsViewControllerDelegate {
                 self?.topicsViewController.topics.append(contentsOf: topics)
             } else {
                 if let error = error {
-                    print(error)
+                    self?.topicsViewController.showAlert(andMessage: error.localizedDescription)
                 }
             }
         }

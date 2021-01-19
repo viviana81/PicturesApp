@@ -14,6 +14,30 @@ protocol SearchViewControllerDelegate: class {
 class SearchViewController: UIViewController {
     
     // MARK: Vars
+    enum State {
+        case idle
+        case searching
+        case searched(photos: [Photo])
+        case error(error: Error)
+    }
+    var status: State = .idle {
+        didSet {
+            switch status {
+            case .idle:
+                placeholder.isHidden = false
+                photoCollection.isHidden = true
+            case .searching:
+                loadingView.isHidden = false
+            case .searched(let photos):
+                self.photos = photos
+                placeholder.isHidden = true
+                loadingView.isHidden = true
+                photoCollection.isHidden = false
+            case .error(let error):
+                showAlert(andMessage: error.localizedDescription)
+            }
+        }
+    }
     lazy var resultSearchController: UISearchController = {
         let controller = UISearchController(searchResultsController: nil)
         controller.dimsBackgroundDuringPresentation = false
@@ -22,6 +46,9 @@ class SearchViewController: UIViewController {
         controller.searchResultsUpdater = self
         controller.searchBar.sizeToFit()
         controller.searchBar.tintColor = .white
+        controller.searchBar.placeholder = "Search"
+        controller.searchBar.textColor = .white
+        controller.searchBar.delegate = self
         return controller
     }()
     
@@ -41,20 +68,30 @@ class SearchViewController: UIViewController {
         return image
     }()
     
+    lazy var loadingView: LoadingView = {
+        let view = LoadingView()
+        view.backgroundColor = .white
+        view.isHidden = true
+        return view
+    }()
+    
     var photos: [Photo] = [] {
         didSet {
             photoCollection.reloadData()
         }
     }
     
-   weak var delegate: SearchViewControllerDelegate?
+    weak var delegate: SearchViewControllerDelegate?
     
     // MARK: - Lifecycle viewcontroller
     override func viewDidLoad() {
         super.viewDidLoad()
+    
         photoCollection.pin(to: view)
         placeholder.pin(to: view, insets: UIEdgeInsets(top: 60, left: 40, bottom: 60, right: 40))
+        loadingView.pin(to: view)
         placeholder.isHidden = false
+        loadingView.isHidden = true
         self.navigationItem.titleView = resultSearchController.searchBar
     }
     
@@ -84,11 +121,18 @@ class SearchViewController: UIViewController {
     }
 }
 
-extension SearchViewController: UISearchResultsUpdating {
+extension SearchViewController: UISearchResultsUpdating, UISearchBarDelegate {
     func updateSearchResults(for searchController: UISearchController) {
-        guard let text = searchController.searchBar.text, !text.isEmpty else { return }
+
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let text = searchBar.text, !text.isEmpty else { return }
         delegate?.searchPhoto(withQuery: text)
-        placeholder.isHidden = true
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        status = .idle
     }
 }
 
