@@ -46,7 +46,7 @@ extension PicturesApi: TargetType {
         case .getPhotos(let page), .getTopics(let page):
             return .requestParameters(parameters: ["page": page], encoding: URLEncoding.default)
         case .search(let query):
-            return .requestParameters(parameters: ["query" : query], encoding: URLEncoding.default)
+            return .requestParameters(parameters: ["query": query], encoding: URLEncoding.default)
 
         }
     }
