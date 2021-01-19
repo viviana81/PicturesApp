@@ -19,7 +19,7 @@ class TopicsCoordinator: Coordinator {
         self.services = services
         self.window = window
         topicsViewController = TopicsViewController()
-        navigation = UINavigationController(rootViewController: topicsViewController)
+        navigation = CustomNavigationController(rootViewController: topicsViewController)
         navigation.tabBarItem = UITabBarItem(title: "Topics", image: UIImage(systemName: "list.bullet"), tag: 1)
     }
     
@@ -35,7 +35,9 @@ extension TopicsCoordinator: TopicsViewControllerDelegate {
             if let topics = topics {
                 self?.topicsViewController.topics.append(contentsOf: topics)
             } else {
-                
+                if let error = error {
+                    print(error)
+                }
             }
         }
     }

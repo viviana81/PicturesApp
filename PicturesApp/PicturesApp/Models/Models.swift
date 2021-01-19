@@ -12,6 +12,13 @@ struct Photo: Codable {
     let description: String?
     let urls: Url
     let user: User?
+    let color: String?
+    let created: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case created = "created_at"
+        case id, description, urls, color, user
+    }
 }
 
 struct User: Codable {

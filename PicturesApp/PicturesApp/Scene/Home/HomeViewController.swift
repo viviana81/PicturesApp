@@ -7,32 +7,65 @@
 
 import UIKit
 
-protocol HomeViewControllerDelegate {
+protocol HomeViewControllerDelegate: class {
     func getPhotos()
 }
 
 class HomeViewController: UIViewController {
     // MARK: - Vars
+    enum State {
+        case idle
+        case loading
+        case loaded(photos: [Photo])
+        case error(error: Error)
+    }
+     
+    var status: State = .idle {
+        didSet {
+            switch status {
+            case .idle: break
+            case .loading:
+                loadingView.isHidden = false
+            case .loaded(let photos):
+                loadingView.isHidden = true
+                self.photos = photos
+            case .error(let error):
+                print(error)
+            }
+        }
+    }
+    
     lazy private var photoCollection: UICollectionView = {
         let collection = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
         collection.dataSource = self
         collection.delegate = self
+        collection.backgroundColor = .clear
         collection.register(PhotoCollectionViewCell.self)
         return collection
     }()
+    
+    lazy var loadingView: LoadingView = {
+        let view = LoadingView()
+        view.backgroundColor = .white
+        view.isHidden = true
+        return view
+    }()
+    
     var photos: [Photo] = [] {
         didSet {
             photoCollection.reloadData()
         }
     }
-     var delegate: HomeViewControllerDelegate?
-     
+     weak var delegate: HomeViewControllerDelegate?
+    
     // MARK: - Lifecycle viewcontroller
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        title = "Pictures"
         photoCollection.pin(to: view)
+        loadingView.pin(to: view)
         delegate?.getPhotos()
+        view.backgroundColor = .white
     }
     
     // MARK: - Actions

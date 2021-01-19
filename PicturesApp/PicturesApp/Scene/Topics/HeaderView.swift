@@ -17,8 +17,10 @@ class HeaderView: UICollectionReusableView {
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .boldSystemFont(ofSize: 24)
-        label.backgroundColor = .gray
-        label.tintColor = .black
+        label.textColor = UIColor(named: "navigationColor")
+        label.layer.cornerRadius = 5
+        label.clipsToBounds = true
+
         return label
     }()
     
@@ -31,7 +33,7 @@ class HeaderView: UICollectionReusableView {
         super.init(frame: .zero)
         
         addSubview(label)
-        
+    
         NSLayoutConstraint.activate([
             label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.padding),
             label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constants.padding),
@@ -44,4 +46,3 @@ class HeaderView: UICollectionReusableView {
         fatalError("init(coder:) has not been implemented")
     }
 }
-

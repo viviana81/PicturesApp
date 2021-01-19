@@ -18,8 +18,9 @@ class AppCoordinator: Coordinator {
     }
     
     func start() {
+        
         let tabBarController = UITabBarController()
-        tabBarController.tabBar.tintColor = .gray
+        tabBarController.tabBar.tintColor = .systemPink
         tabBarController.tabBar.barTintColor = .white
         
         let homeCoordinator = HomeCoordinator(window: window, services: services)
@@ -38,5 +39,6 @@ class AppCoordinator: Coordinator {
         
         coordinators.forEach { $0.start() } // lanciamo tutti gli start dei coordinators
         window.rootViewController = tabBarController
+        
     }
 }

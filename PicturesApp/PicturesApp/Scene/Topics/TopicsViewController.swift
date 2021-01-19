@@ -20,6 +20,7 @@ class TopicsViewController: UIViewController {
         collection.register(HeaderView.self, forSupplementaryViewOfKind: HeaderView.kind, withReuseIdentifier: HeaderView.reuseIdentifier)
         collection.dataSource = self
         collection.delegate = self
+        collection.backgroundColor = .clear
         return collection
     }()
     
@@ -30,15 +31,17 @@ class TopicsViewController: UIViewController {
     }
     var sections = 0
     
-    var delegate: TopicsViewControllerDelegate?
+    weak var delegate: TopicsViewControllerDelegate?
     
     // MARK: - Lifecycle viewcontroller
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        title = "Topics"
         topicsCollection.pin(to: view)
         delegate?.getTopics()
+        view.backgroundColor = .white
         
     }
     
@@ -52,7 +55,7 @@ class TopicsViewController: UIViewController {
                                               heightDimension: .fractionalHeight(1.0))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.50),
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.40),
                                                heightDimension: .absolute(200))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 1)
         group.contentInsets = NSDirectionalEdgeInsets(

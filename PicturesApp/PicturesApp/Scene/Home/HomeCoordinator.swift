@@ -19,14 +19,13 @@ class HomeCoordinator: Coordinator {
         self.services = services
         self.window = window
         homeViewController = HomeViewController()
-        navigation = UINavigationController(rootViewController: homeViewController)
+        navigation = CustomNavigationController(rootViewController: homeViewController)
         navigation.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "house"), tag: 0)
     }
     
     func start() {
         homeViewController.delegate = self
-        window.rootViewController = navigation
-        window.makeKeyAndVisible()
+    
     }
 }
 extension HomeCoordinator: HomeViewControllerDelegate {
@@ -36,7 +35,11 @@ extension HomeCoordinator: HomeViewControllerDelegate {
             self?.page += 1
             if let photos = photos {
                 self?.homeViewController.photos.append(contentsOf: photos)
-            } 
+            } else {
+                if let error = error {
+                    print(error)
+                }
+            }
         }
     }
 }

@@ -16,20 +16,60 @@
                 <rect key="frame" x="0.0" y="0.0" width="151" height="144"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lhG-vK-5eX">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lhG-vK-5eX">
                         <rect key="frame" x="0.0" y="0.0" width="151" height="144"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dk7-5g-ocz">
+                        <rect key="frame" x="0.0" y="94" width="151" height="50"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="tTu-kW-8gR">
+                                <rect key="frame" x="6" y="6" width="139" height="37"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fgi-JS-GO8">
+                                        <rect key="frame" x="0.0" y="0.0" width="139" height="18"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vk2-wL-JLR">
+                                        <rect key="frame" x="0.0" y="21" width="139" height="16"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="tTu-kW-8gR" firstAttribute="leading" secondItem="dk7-5g-ocz" secondAttribute="leading" constant="6" id="D0j-os-Qsi"/>
+                            <constraint firstAttribute="height" constant="50" id="LIz-IO-o9z"/>
+                            <constraint firstItem="tTu-kW-8gR" firstAttribute="top" secondItem="dk7-5g-ocz" secondAttribute="top" constant="6" id="LRY-FT-C6G"/>
+                            <constraint firstAttribute="trailing" secondItem="tTu-kW-8gR" secondAttribute="trailing" constant="6" id="R5h-Vh-jzP"/>
+                        </constraints>
+                    </view>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="dk7-5g-ocz" secondAttribute="trailing" id="5Lh-E8-icj"/>
+                <constraint firstItem="dk7-5g-ocz" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="7xZ-fd-cBV"/>
                 <constraint firstAttribute="trailing" secondItem="lhG-vK-5eX" secondAttribute="trailing" id="EgQ-PL-mZc"/>
                 <constraint firstItem="lhG-vK-5eX" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="XY0-kZ-khU"/>
                 <constraint firstAttribute="bottom" secondItem="lhG-vK-5eX" secondAttribute="bottom" id="h3Q-ew-Ghb"/>
+                <constraint firstAttribute="bottom" secondItem="dk7-5g-ocz" secondAttribute="bottom" id="ijK-1N-yLO"/>
                 <constraint firstItem="lhG-vK-5eX" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="in8-wl-cgV"/>
             </constraints>
             <size key="customSize" width="151" height="144"/>
             <connections>
+                <outlet property="descriptionLabel" destination="Vk2-wL-JLR" id="mqq-B8-xUy"/>
+                <outlet property="descriptionView" destination="dk7-5g-ocz" id="ZEp-JY-tE0"/>
+                <outlet property="nameLabel" destination="Fgi-JS-GO8" id="bqL-CM-XuY"/>
                 <outlet property="pictures" destination="lhG-vK-5eX" id="1jr-fb-5c4"/>
             </connections>
             <point key="canvasLocation" x="92.028985507246389" y="131.25"/>
