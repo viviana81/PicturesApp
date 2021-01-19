@@ -18,8 +18,9 @@ class SearchCoordinator: Coordinator {
         self.services = services
         self.window = window
         searchViewController = SearchViewController()
-        navigation = UINavigationController(rootViewController: searchViewController)
+        navigation = CustomNavigationController(rootViewController: searchViewController)
         navigation.tabBarItem = UITabBarItem(title: "Search", image: UIImage(systemName: "magnifyingglass"), tag: 2)
+       // navigation.navigationItem.searchController = searchViewController.resultSearchController
         
     }
     

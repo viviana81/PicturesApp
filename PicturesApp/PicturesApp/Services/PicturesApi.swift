@@ -11,6 +11,7 @@ import Moya
 enum PicturesApi {
     case getPhotos(page: Int)
     case getTopics(page: Int)
+    case search(query: String)
 }
 
 extension PicturesApi: TargetType {
@@ -24,12 +25,14 @@ extension PicturesApi: TargetType {
             return "photos"
         case .getTopics:
             return "topics"
+        case .search:
+            return "search/photos"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .getPhotos, .getTopics:
+        case .getPhotos, .getTopics, .search:
             return .get
         }
     }
@@ -42,6 +45,8 @@ extension PicturesApi: TargetType {
         switch self {
         case .getPhotos(let page), .getTopics(let page):
             return .requestParameters(parameters: ["page": page], encoding: URLEncoding.default)
+        case .search(let query):
+            return .requestParameters(parameters: ["query" : query], encoding: URLEncoding.default)
 
         }
     }

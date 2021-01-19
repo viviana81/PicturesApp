@@ -47,3 +47,14 @@ struct Topic: Codable {
         case id, title
     }
 }
+
+struct SearchedResponse<T: Decodable>: Decodable {
+    let total: Int
+    let pages: Int
+    let results: [T]
+    
+    enum CodingKeys: String, CodingKey {
+        case pages = "total_pages"
+        case total, results
+    }
+}
