@@ -25,16 +25,26 @@ struct User: Codable {
     let id: String
     let name: String
     let instagram: String?
+    let imageProfile: ImageProfile
+    let location: String
     
     enum CodingKeys: String, CodingKey {
         case instagram = "instagram_username"
-        case id, name
+        case imageProfile = "profile_image"
+        case id, name, location
     }
+}
+
+struct ImageProfile: Codable {
+    let small: String
+    let medium: String
+    let large: String
 }
 
 struct Url: Codable {
     let full: String
     let thumb: String
+    let regular: String
 }
 
 struct Topic: Codable {
