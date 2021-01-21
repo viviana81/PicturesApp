@@ -6,27 +6,32 @@
 //
 
 import UIKit
-import Kingfisher
 
 class ImageDetailViewController: UIViewController {
 
     @IBOutlet weak var fullImage: UIImageView!
-    /*private let photo: Photo
+    private let image: UIImage
     
-    init(photo: Photo) {
-        self.photo = photo
+    init(image: UIImage) {
+        self.image = image
         super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }*/
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        fullImage.image = image
 
-      /*  if let photo = URL(string: photo.urls.full) {
-            fullImage.kf.setImage(with: photo, placeholder: UIImage(named: "placeholder"))
-        }*/
+        let secondTap = UITapGestureRecognizer(target: self, action: #selector(ImageDetailViewController.onImageTap(_:)))
+        fullImage.addGestureRecognizer(secondTap)
+        fullImage.isUserInteractionEnabled = true
+    }
+    
+    @objc
+    func onImageTap(_ recognizer: UIGestureRecognizer) {
+        dismiss(animated: true, completion: nil)
     }
 }

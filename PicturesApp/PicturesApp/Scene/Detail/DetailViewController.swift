@@ -79,6 +79,20 @@ class DetailViewController: UIViewController {
     
     @objc
     func onImageTap(_ recognizer: UIGestureRecognizer) {
-        print("tapped")
+      // TODO: andrebbe nel coordinator
+        guard let url = URL(string: photo.urls.full) else { return }
+        
+        KingfisherManager.shared.retrieveImage(with: url) { (res) in
+            
+            switch res {
+            case .success(let img):
+                
+                let imageDetail = ImageDetailViewController(image: img.image)
+                imageDetail.modalPresentationStyle = .fullScreen
+                self.present(imageDetail, animated: true, completion: nil)
+            default:break
+            }
+        }
+        
     }
 }

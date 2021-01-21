@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -19,14 +20,60 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dtL-yn-SMs">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dtL-yn-SMs">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:20" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D0n-m6-f6b">
+                    <rect key="frame" x="20" y="112" width="374" height="72"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="60"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Giovedì 21 gennaio" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GVQ-Yq-xUf">
+                    <rect key="frame" x="20" y="200" width="374" height="27.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YhC-i0-CNj">
+                    <rect key="frame" x="167" y="56" width="82" height="23"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <imageReference key="image" image="lock.open.fill" catalog="system" symbolScale="large"/>
+                </imageView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="flashlight.off.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="R7A-DB-Tf1">
+                    <rect key="frame" x="24" y="795.5" width="50" height="51"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="50" id="NqV-rt-Jrg"/>
+                        <constraint firstAttribute="height" constant="50" id="UFQ-6f-z3y"/>
+                    </constraints>
+                </imageView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="aee-CT-xSz">
+                    <rect key="frame" x="340" y="796.5" width="50" height="48"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="50" id="Mlm-C9-Skz"/>
+                        <constraint firstAttribute="height" constant="50" id="icn-A2-PQD"/>
+                    </constraints>
                 </imageView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="R7A-DB-Tf1" secondAttribute="bottom" constant="16" id="5cn-tm-u6Z"/>
                 <constraint firstItem="dtL-yn-SMs" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="69s-ft-P19"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="GVQ-Yq-xUf" secondAttribute="trailing" constant="20" id="LsL-ir-aOi"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="aee-CT-xSz" secondAttribute="trailing" constant="24" id="Mzr-J7-ZjJ"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="D0n-m6-f6b" secondAttribute="trailing" constant="20" id="NHN-39-Xuu"/>
+                <constraint firstItem="D0n-m6-f6b" firstAttribute="top" secondItem="YhC-i0-CNj" secondAttribute="bottom" constant="34" id="PJZ-MP-uCR"/>
+                <constraint firstItem="GVQ-Yq-xUf" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="Qz9-Hb-tdi"/>
+                <constraint firstItem="YhC-i0-CNj" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="14" id="bY8-gf-jji"/>
+                <constraint firstItem="GVQ-Yq-xUf" firstAttribute="top" secondItem="D0n-m6-f6b" secondAttribute="bottom" constant="16" id="bcI-mh-hmu"/>
+                <constraint firstItem="R7A-DB-Tf1" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="24" id="cGH-yG-jjV"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="YhC-i0-CNj" secondAttribute="trailing" constant="165" id="dp4-89-8Sg"/>
+                <constraint firstItem="aee-CT-xSz" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" constant="-16" id="gBj-Ve-3R3"/>
+                <constraint firstItem="D0n-m6-f6b" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="ojC-OC-bB0"/>
+                <constraint firstItem="YhC-i0-CNj" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="167" id="rA8-CH-h5E"/>
                 <constraint firstItem="dtL-yn-SMs" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="vAQ-sB-6SJ"/>
                 <constraint firstAttribute="bottom" secondItem="dtL-yn-SMs" secondAttribute="bottom" id="wrP-CO-0GO"/>
                 <constraint firstItem="dtL-yn-SMs" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="wvV-dr-ZlM"/>
@@ -35,6 +82,9 @@
         </view>
     </objects>
     <resources>
+        <image name="camera.fill" catalog="system" width="128" height="94"/>
+        <image name="flashlight.off.fill" catalog="system" width="76" height="128"/>
+        <image name="lock.open.fill" catalog="system" width="128" height="112"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
