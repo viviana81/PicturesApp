@@ -37,6 +37,8 @@
 		B9E457E625B746880008EC52 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E457E525B746880008EC52 /* UIViewController.swift */; };
 		B9E457EB25B74D7D0008EC52 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E457E925B74D7D0008EC52 /* DetailViewController.swift */; };
 		B9E457EC25B74D7D0008EC52 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9E457EA25B74D7D0008EC52 /* DetailViewController.xib */; };
+		B9E457F225B993B70008EC52 /* ImageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E457F025B993B70008EC52 /* ImageDetailViewController.swift */; };
+		B9E457F325B993B70008EC52 /* ImageDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9E457F125B993B70008EC52 /* ImageDetailViewController.xib */; };
 		B9E68FD625B041C50028EAE5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E68FD525B041C50028EAE5 /* AppDelegate.swift */; };
 		B9E68FD825B041C50028EAE5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E68FD725B041C50028EAE5 /* SceneDelegate.swift */; };
 		B9E68FDA25B041C50028EAE5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E68FD925B041C50028EAE5 /* HomeViewController.swift */; };
@@ -77,6 +79,8 @@
 		B9E457E525B746880008EC52 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		B9E457E925B74D7D0008EC52 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		B9E457EA25B74D7D0008EC52 /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
+		B9E457F025B993B70008EC52 /* ImageDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetailViewController.swift; sourceTree = "<group>"; };
+		B9E457F125B993B70008EC52 /* ImageDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageDetailViewController.xib; sourceTree = "<group>"; };
 		B9E68FD225B041C50028EAE5 /* PicturesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PicturesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9E68FD525B041C50028EAE5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B9E68FD725B041C50028EAE5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -232,10 +236,20 @@
 		B9E457E825B74D5E0008EC52 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				B9E457EF25B993720008EC52 /* ImageDetail */,
 				B9E457E925B74D7D0008EC52 /* DetailViewController.swift */,
 				B9E457EA25B74D7D0008EC52 /* DetailViewController.xib */,
 			);
 			path = Detail;
+			sourceTree = "<group>";
+		};
+		B9E457EF25B993720008EC52 /* ImageDetail */ = {
+			isa = PBXGroup;
+			children = (
+				B9E457F025B993B70008EC52 /* ImageDetailViewController.swift */,
+				B9E457F125B993B70008EC52 /* ImageDetailViewController.xib */,
+			);
+			path = ImageDetail;
 			sourceTree = "<group>";
 		};
 		B9E68FC925B041C40028EAE5 = {
@@ -378,6 +392,7 @@
 				B9C63BF425B4B35900C6F768 /* SearchViewController.xib in Resources */,
 				B9E68FDF25B041CA0028EAE5 /* Assets.xcassets in Resources */,
 				B9C63BEC25B4B2B600C6F768 /* TopicsViewController.xib in Resources */,
+				B9E457F325B993B70008EC52 /* ImageDetailViewController.xib in Resources */,
 				B96CA0A325B0482F002D262A /* HomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -465,6 +480,7 @@
 				B9E457EB25B74D7D0008EC52 /* DetailViewController.swift in Sources */,
 				B9C63BEF25B4B32500C6F768 /* TopicsCoordinator.swift in Sources */,
 				B9C63BE425B1F4E700C6F768 /* UIView+Pin.swift in Sources */,
+				B9E457F225B993B70008EC52 /* ImageDetailViewController.swift in Sources */,
 				B9C63BF325B4B35900C6F768 /* SearchViewController.swift in Sources */,
 				B96CA0C825B09996002D262A /* Coordinator.swift in Sources */,
 				B96CA0B825B084DC002D262A /* PicturesApi.swift in Sources */,

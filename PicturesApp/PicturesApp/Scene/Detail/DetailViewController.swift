@@ -33,7 +33,7 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
         if let imageProfile = URL(string: photo.user?.imageProfile.small ?? "") {
             userImage.kf.setImage(with: imageProfile)
         }
@@ -49,7 +49,12 @@ class DetailViewController: UIViewController {
         userLocation.text = photo.user?.location
         descriptionLabel.isHidden = false
         descriptionTitleLabel.isHidden = false
-        descriptionLabel.text = photo.description
+        
+        if let description = photo.description {
+            descriptionLabel.text = description
+        } else {
+            descriptionLabel.text = "No description"
+        }
         
         let color = UIColor(hexFromString: photo.color ?? "")
         if color.isLight {
@@ -64,8 +69,16 @@ class DetailViewController: UIViewController {
             userLocation.textColor = UIColor.white
             downloadButton.tintColor = UIColor.white
             descriptionTitleLabel.textColor = UIColor.white
-           // likesLabel.textColor = UIColor.white
+            // likesLabel.textColor = UIColor.white
         }
+        
+        let imageTap = UITapGestureRecognizer(target: self, action: #selector(DetailViewController.onImageTap(_:)))
+        photoImage.addGestureRecognizer(imageTap)
+        photoImage.isUserInteractionEnabled = true
     }
-
+    
+    @objc
+    func onImageTap(_ recognizer: UIGestureRecognizer) {
+        print("tapped")
+    }
 }

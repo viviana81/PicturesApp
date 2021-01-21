@@ -22,7 +22,7 @@ struct ApiServices: Services {
         provider.request(.getPhotos(page: page)) { result in
             switch result {
             case .success(let response):
-                let photos = try? decoder.decode([Photo].self, from: response.data)
+                let photos = try! decoder.decode([Photo].self, from: response.data)
                 completion(photos, nil)
             case .failure(let error):
                 completion(nil, error)

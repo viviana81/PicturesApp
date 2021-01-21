@@ -26,7 +26,7 @@ struct User: Codable {
     let name: String
     let instagram: String?
     let imageProfile: ImageProfile
-    let location: String
+    let location: String?
     
     enum CodingKeys: String, CodingKey {
         case instagram = "instagram_username"
