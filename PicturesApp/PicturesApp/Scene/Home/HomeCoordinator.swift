@@ -47,4 +47,21 @@ extension HomeCoordinator: HomeViewControllerDelegate {
         let detail = DetailViewController(photo: photo)
         navigation.present(detail, animated: true, completion: nil)
     }
+    
+    func login() {
+        homeViewController.showAlert(withTitle: "Login", andMessage: "Vuoi effettuare il login", showCancel: true) {
+              if let url = URL(string: "https://unsplash.com/oauth/authorize?client_id=bXdSj1vu0gOXPwaT7vDBDT1mWZF7CE9CYHHsqfj1O9k&redirect_uri=picturesapp:&response_type=code&scope=public") {
+                  UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                self.homeViewController.showAlert(withTitle: "Complimenti", andMessage: "Hai appena effettuato l'accesso", showCancel: false, completion: nil)
+              }
+          }
+    }
+    
+    func logout() {
+        homeViewController.showAlert(withTitle: "Logout", andMessage: "Sei sicuro di volere effettuare il logout?", showCancel: true) {
+            
+            UserDefaultsConfig.token = nil
+            self.homeViewController.reloadButton()
+        }
+    }
 }

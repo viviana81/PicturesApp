@@ -10,6 +10,8 @@ import UIKit
 protocol HomeViewControllerDelegate: class {
     func getPhotos()
     func onPhotoTap(photo: Photo)
+    func login()
+    func logout()
 }
 
 class HomeViewController: UIViewController {
@@ -67,9 +69,40 @@ class HomeViewController: UIViewController {
         loadingView.pin(to: view)
         delegate?.getPhotos()
         view.backgroundColor = .white
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshUserStatus), name: Notification.Name("refreshUser"), object: nil)
+
+        reloadButton()
+    
+    }
+        
+    // MARK: - Actions
+    
+    @objc func refreshUserStatus(_ notification: Notification) {
+        reloadButton()
     }
     
-    // MARK: - Actions
+    func reloadButton() {
+        if let token = UserDefaultsConfig.token {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "power"), style: .done, target: self, action: #selector(goToLogut))
+            navigationItem.rightBarButtonItem!.tintColor = .white
+        } else {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "person.crop.circle"), style: .done, target: self, action: #selector(goToLogin))
+            navigationItem.rightBarButtonItem!.tintColor = .white
+        }
+    }
+    
+    @objc
+    func goToLogin() {
+        delegate?.login()
+      
+    }
+    
+    @objc
+    func goToLogut() {
+        delegate?.logout()
+    
+    }
     
     func createLayout() -> UICollectionViewLayout {
         

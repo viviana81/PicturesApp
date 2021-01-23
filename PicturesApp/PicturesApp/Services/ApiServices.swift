@@ -9,20 +9,22 @@ import Foundation
 import Moya
 
 struct ApiServices: Services {
-   
+    
     let provider = MoyaProvider<PicturesApi>(plugins: [NetworkLoggerPlugin(verbose: false, cURL: true)])
     
     let decoder: JSONDecoder
     
     init() {
+       
         decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
     }
     
     func getPhotos(page: Int, completion: @escaping ([Photo]?, Error?) -> Void) {
         provider.request(.getPhotos(page: page)) { result in
             switch result {
             case .success(let response):
-                let photos = try! decoder.decode([Photo].self, from: response.data)
+                let photos = try? decoder.decode([Photo].self, from: response.data)
                 completion(photos, nil)
             case .failure(let error):
                 completion(nil, error)
@@ -48,6 +50,18 @@ struct ApiServices: Services {
             case .success(let response):
                 let searchedResp = try? decoder.decode(SearchedResponse<Photo>.self, from: response.data)
                 completion(searchedResp, nil)
+            case .failure(let error):
+                completion(nil, error)
+            }
+        }
+    }
+    
+    func getToken(code: String, completion: @escaping (Token?, Error?) -> Void) {
+        provider.request(.getToken(code: code)) { result in
+            switch result {
+            case .success(let response):
+                let token = try? decoder.decode(Token.self, from: response.data)
+                completion(token, nil)
             case .failure(let error):
                 completion(nil, error)
             }

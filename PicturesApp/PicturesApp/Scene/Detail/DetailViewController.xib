@@ -10,10 +10,15 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailViewController" customModule="PicturesApp" customModuleProvider="target">
             <connections>
+                <outlet property="dateLabel" destination="bfa-Hl-E6G" id="hst-8s-JpX"/>
                 <outlet property="descriptionLabel" destination="SgI-SX-rIq" id="LJL-yN-f8w"/>
                 <outlet property="descriptionTitleLabel" destination="GS8-vq-7nK" id="P7E-lJ-m4b"/>
                 <outlet property="downloadButton" destination="3sH-nc-oJJ" id="HW2-cs-Q2P"/>
+                <outlet property="likeImage" destination="cqq-JY-HGl" id="7te-nj-hRP"/>
+                <outlet property="likeLabel" destination="ekg-be-X5t" id="ew9-V8-0xx"/>
                 <outlet property="photoImage" destination="tgY-2a-vny" id="VXA-aS-U3O"/>
+                <outlet property="sizeImage" destination="BjR-ZY-ic3" id="umB-Cx-uOD"/>
+                <outlet property="sizeLabel" destination="9Qz-oR-UUo" id="pF8-iz-cFj"/>
                 <outlet property="userImage" destination="1XC-mN-y7e" id="pqI-9q-pf6"/>
                 <outlet property="userLabel" destination="DZb-Hc-Xtf" id="9bc-id-C8g"/>
                 <outlet property="userLocation" destination="Nyz-Ac-QrU" id="t5q-4B-ki6"/>
@@ -70,15 +75,52 @@
                     <state key="normal">
                         <imageReference key="image" image="square.and.arrow.up.fill" catalog="system" symbolScale="large"/>
                     </state>
+                    <connections>
+                        <action selector="download:" destination="-1" eventType="touchUpInside" id="AFA-hy-kiF"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GS8-vq-7nK">
-                    <rect key="frame" x="16" y="581" width="382" height="21.5"/>
+                    <rect key="frame" x="16" y="696" width="382" height="21.5"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SgI-SX-rIq">
-                    <rect key="frame" x="16" y="610" width="382" height="20.5"/>
+                    <rect key="frame" x="16" y="725" width="382" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Created: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bfa-Hl-E6G">
+                    <rect key="frame" x="16" y="569" width="382" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square.on.square.squareshape.controlhandles" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="BjR-ZY-ic3">
+                    <rect key="frame" x="16" y="598" width="30" height="30"/>
+                    <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="RaY-VZ-6Na"/>
+                        <constraint firstAttribute="width" constant="30" id="mmA-dV-gmh"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Qz-oR-UUo">
+                    <rect key="frame" x="54" y="603" width="344" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="cqq-JY-HGl">
+                    <rect key="frame" x="16" y="648.5" width="30" height="27.5"/>
+                    <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="LT1-Zs-lSx"/>
+                        <constraint firstAttribute="width" constant="30" id="W4T-6q-1ac"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ekg-be-X5t">
+                    <rect key="frame" x="54" y="651" width="344" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -87,25 +129,38 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="ekg-be-X5t" firstAttribute="leading" secondItem="cqq-JY-HGl" secondAttribute="trailing" constant="8" id="2vI-BU-lrO"/>
                 <constraint firstItem="3sH-nc-oJJ" firstAttribute="leading" secondItem="DZb-Hc-Xtf" secondAttribute="trailing" constant="5" id="3Du-1J-qJF"/>
                 <constraint firstItem="tgY-2a-vny" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="3Ed-Dh-OGM"/>
                 <constraint firstItem="DZb-Hc-Xtf" firstAttribute="leading" secondItem="1XC-mN-y7e" secondAttribute="trailing" constant="34" id="8bB-dv-KwS"/>
-                <constraint firstItem="GS8-vq-7nK" firstAttribute="top" secondItem="Nyz-Ac-QrU" secondAttribute="bottom" constant="47.5" id="8dB-LP-M75"/>
                 <constraint firstItem="SgI-SX-rIq" firstAttribute="top" secondItem="GS8-vq-7nK" secondAttribute="bottom" constant="7.5" id="8wx-jd-bhr"/>
                 <constraint firstItem="tgY-2a-vny" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="AK8-mu-4jt"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="3sH-nc-oJJ" secondAttribute="trailing" constant="16" id="AdS-un-Dwa"/>
+                <constraint firstItem="ekg-be-X5t" firstAttribute="top" secondItem="9Qz-oR-UUo" secondAttribute="bottom" constant="27" id="Atn-q4-1jQ"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="bfa-Hl-E6G" secondAttribute="trailing" constant="16" id="BxN-bl-eSC"/>
                 <constraint firstItem="SgI-SX-rIq" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="CkU-bE-2tp"/>
+                <constraint firstItem="GS8-vq-7nK" firstAttribute="top" secondItem="ekg-be-X5t" secondAttribute="bottom" constant="24" id="Dwb-58-CGo"/>
+                <constraint firstItem="9Qz-oR-UUo" firstAttribute="top" secondItem="bfa-Hl-E6G" secondAttribute="bottom" constant="13" id="EgC-nf-ZiJ"/>
                 <constraint firstItem="Nyz-Ac-QrU" firstAttribute="trailing" secondItem="DZb-Hc-Xtf" secondAttribute="trailing" id="FpC-Nc-fla"/>
                 <constraint firstItem="GS8-vq-7nK" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="HMk-aY-PZh"/>
+                <constraint firstItem="BjR-ZY-ic3" firstAttribute="top" secondItem="bfa-Hl-E6G" secondAttribute="bottom" constant="8" symbolic="YES" id="Ii5-Sa-04s"/>
                 <constraint firstItem="3sH-nc-oJJ" firstAttribute="top" secondItem="tgY-2a-vny" secondAttribute="bottom" constant="16" id="QW8-vz-DpU"/>
                 <constraint firstItem="Nyz-Ac-QrU" firstAttribute="top" secondItem="DZb-Hc-Xtf" secondAttribute="bottom" constant="7.5" id="SJ4-89-OyY"/>
+                <constraint firstItem="cqq-JY-HGl" firstAttribute="top" secondItem="BjR-ZY-ic3" secondAttribute="bottom" constant="19" id="VsH-aU-iNE"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="SgI-SX-rIq" secondAttribute="trailing" constant="16" id="Xvj-LS-2Ev"/>
                 <constraint firstItem="1XC-mN-y7e" firstAttribute="leading" secondItem="tgY-2a-vny" secondAttribute="leading" id="Y8y-1z-PBr"/>
+                <constraint firstItem="BjR-ZY-ic3" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="YyE-0e-Xin"/>
+                <constraint firstItem="bfa-Hl-E6G" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="ayj-LX-c08"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ekg-be-X5t" secondAttribute="trailing" constant="16" id="bpq-es-Gwi"/>
+                <constraint firstItem="bfa-Hl-E6G" firstAttribute="top" secondItem="1XC-mN-y7e" secondAttribute="bottom" constant="46" id="f2k-de-Jgq"/>
                 <constraint firstItem="DZb-Hc-Xtf" firstAttribute="centerY" secondItem="1XC-mN-y7e" secondAttribute="centerY" id="fZV-He-HLr"/>
+                <constraint firstItem="cqq-JY-HGl" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="gkA-fN-6p9"/>
                 <constraint firstItem="tgY-2a-vny" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" constant="-16" id="h1c-6Q-E8p"/>
                 <constraint firstItem="1XC-mN-y7e" firstAttribute="top" secondItem="tgY-2a-vny" secondAttribute="bottom" constant="17" id="hIG-85-19I"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="9Qz-oR-UUo" secondAttribute="trailing" constant="16" id="sUG-QK-nn8"/>
                 <constraint firstItem="Nyz-Ac-QrU" firstAttribute="leading" secondItem="DZb-Hc-Xtf" secondAttribute="leading" id="tvD-2Q-EUN"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="GS8-vq-7nK" secondAttribute="trailing" constant="16" id="ubN-rk-dg2"/>
+                <constraint firstItem="9Qz-oR-UUo" firstAttribute="leading" secondItem="BjR-ZY-ic3" secondAttribute="trailing" constant="8" id="yb3-Nc-5K9"/>
             </constraints>
             <userDefinedRuntimeAttributes>
                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -116,6 +171,8 @@
         </view>
     </objects>
     <resources>
+        <image name="heart.fill" catalog="system" width="128" height="109"/>
         <image name="square.and.arrow.up.fill" catalog="system" width="115" height="128"/>
+        <image name="square.on.square.squareshape.controlhandles" catalog="system" width="128" height="116"/>
     </resources>
 </document>

@@ -13,11 +13,14 @@ struct Photo: Codable {
     let urls: Url
     let user: User?
     let color: String?
-    let created: String?
+    let created: Date?
+    let likes: Int?
+    let width: Int?
+    let height: Int?
     
     enum CodingKeys: String, CodingKey {
         case created = "created_at"
-        case id, description, urls, color, user
+        case id, description, urls, color, user, likes, width, height
     }
 }
 
@@ -66,5 +69,19 @@ struct SearchedResponse<T: Decodable>: Decodable {
     enum CodingKeys: String, CodingKey {
         case pages = "total_pages"
         case total, results
+    }
+}
+
+struct Token: Codable {
+    let access: String
+    let type: String
+    let scope: String
+    let created: Int
+
+    enum CodingKeys: String, CodingKey {
+        case access = "access_token"
+        case type =  "token_type"
+        case created = "created_at"
+        case scope
     }
 }
