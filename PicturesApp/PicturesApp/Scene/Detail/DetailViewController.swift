@@ -63,7 +63,6 @@ class DetailViewController: UIViewController {
             sizeLabel.isHidden = true
         }
         
-        
         if let likes = photo.likes {
             likeLabel.text = "\(likes)"
         } else {

@@ -64,4 +64,10 @@ extension HomeCoordinator: HomeViewControllerDelegate {
             self.homeViewController.reloadButton()
         }
     }
+    
+    func viewProfile() {
+        let profileCoordinator = ProfileCoordinator(services: services, navigation: navigation)
+        profileCoordinator.start()
+        coordinators.append(profileCoordinator)
+    }
 }

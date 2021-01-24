@@ -13,6 +13,7 @@ enum PicturesApi {
     case getTopics(page: Int)
     case search(query: String)
     case getToken(code: String)
+    case getMe
 }
 
 extension PicturesApi: TargetType {
@@ -35,12 +36,14 @@ extension PicturesApi: TargetType {
             return "search/photos"
         case .getToken:
             return "oauth/token"
+        case .getMe:
+            return "me"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .getPhotos, .getTopics, .search:
+        case .getPhotos, .getTopics, .search, .getMe:
             return .get
         case .getToken:
             return .post
@@ -63,6 +66,8 @@ extension PicturesApi: TargetType {
                                                    "client_secret": "G9nvKoXT14NqIrVdB7bsOtE5Gwd80zWoH-8jvOuR53A",
                                                    "redirect_uri": "picturesapp:",
                                                    "grant_type": "authorization_code"], encoding: URLEncoding.default)
+        case .getMe:
+            return .requestPlain
 
         }
     }

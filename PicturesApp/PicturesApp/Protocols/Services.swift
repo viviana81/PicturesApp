@@ -13,4 +13,5 @@ protocol Services {
     func getTopics(page: Int, completion: @escaping([Topic]?, Error?) -> Void)
     func search(query: String, completion: @escaping(SearchedResponse<Photo>?, Error?) -> Void)
     func getToken(code: String, completion: @escaping(Token?, Error?) -> Void)
+    func getMe(completion: @escaping(User?, Error?) -> Void)
 }

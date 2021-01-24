@@ -26,7 +26,10 @@ struct Photo: Codable {
 
 struct User: Codable {
     let id: String
+    let username: String
     let name: String
+    let firstName: String?
+    let lastName: String?
     let instagram: String?
     let imageProfile: ImageProfile
     let location: String?
@@ -34,7 +37,9 @@ struct User: Codable {
     enum CodingKeys: String, CodingKey {
         case instagram = "instagram_username"
         case imageProfile = "profile_image"
-        case id, name, location
+        case firstName = "first_name"
+        case lastName = "last_name"
+        case id, name, location, username
     }
 }
 

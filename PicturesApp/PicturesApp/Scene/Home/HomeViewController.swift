@@ -12,6 +12,7 @@ protocol HomeViewControllerDelegate: class {
     func onPhotoTap(photo: Photo)
     func login()
     func logout()
+    func viewProfile()
 }
 
 class HomeViewController: UIViewController {
@@ -84,7 +85,7 @@ class HomeViewController: UIViewController {
     
     func reloadButton() {
         if let token = UserDefaultsConfig.token {
-            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "power"), style: .done, target: self, action: #selector(goToLogut))
+            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "person.crop.circle"), style: .done, target: self, action: #selector(goToProfile))
             navigationItem.rightBarButtonItem!.tintColor = .white
         } else {
             navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "person.crop.circle"), style: .done, target: self, action: #selector(goToLogin))
@@ -99,9 +100,8 @@ class HomeViewController: UIViewController {
     }
     
     @objc
-    func goToLogut() {
-        delegate?.logout()
-    
+    func goToProfile() {
+        delegate?.viewProfile()
     }
     
     func createLayout() -> UICollectionViewLayout {
