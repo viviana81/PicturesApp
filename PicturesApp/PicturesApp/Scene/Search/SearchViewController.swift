@@ -9,6 +9,7 @@ import UIKit
 
 protocol SearchViewControllerDelegate: class {
     func searchPhoto(withQuery query: String)
+    func openDetail(searchedPhoto: Photo)
 }
 
 class SearchViewController: UIViewController {
@@ -55,6 +56,7 @@ class SearchViewController: UIViewController {
     lazy private var photoCollection: UICollectionView = {
         let collection = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
         collection.dataSource = self
+        collection.delegate = self
         collection.backgroundColor = .clear
         collection.register(PhotoCollectionViewCell.self)
         return collection
@@ -136,7 +138,7 @@ extension SearchViewController: UISearchResultsUpdating, UISearchBarDelegate {
     }
 }
 
-extension SearchViewController: UICollectionViewDataSource {
+extension SearchViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return photos.count
     }
@@ -146,5 +148,10 @@ extension SearchViewController: UICollectionViewDataSource {
         let photo = photos[indexPath.item]
         cell.configure(withPhoto: photo)
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let searchedPhoto = photos[indexPath.item]
+        delegate?.openDetail(searchedPhoto: searchedPhoto)
     }
 }

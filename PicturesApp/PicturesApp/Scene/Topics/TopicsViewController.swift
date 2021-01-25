@@ -9,6 +9,7 @@ import UIKit
 
 protocol TopicsViewControllerDelegate: class {
     func getTopics()
+    func openDetail(photo: Photo)
 }
 
 class TopicsViewController: UIViewController {
@@ -115,5 +116,10 @@ extension TopicsViewController: UICollectionViewDataSource, UICollectionViewDele
         supplementaryView.label.text = topics[indexPath.section].title
         
         return supplementaryView
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let photo = topics[indexPath.section].previewPhotos[indexPath.item]
+        delegate?.openDetail(photo: photo)
     }
 }

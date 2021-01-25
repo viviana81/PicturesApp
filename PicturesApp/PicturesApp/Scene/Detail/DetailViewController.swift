@@ -8,6 +8,10 @@
 import UIKit
 import Kingfisher
 
+protocol DetailViewControllerDelegate: class {
+    func onTappedImage()
+}
+
 class DetailViewController: UIViewController {
     
     // MARK: - Vars
@@ -24,6 +28,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var likeLabel: UILabel!
     @IBOutlet weak var sizeLabel: UILabel!
     
+    weak var delegate: DetailViewControllerDelegate?
     private let photo: Photo
     private let formatter: DateFormatter
     
@@ -115,20 +120,7 @@ class DetailViewController: UIViewController {
     
     @objc
     func onImageTap(_ recognizer: UIGestureRecognizer) {
-        // TODO: andrebbe nel coordinator
-        guard let url = URL(string: photo.urls.full) else { return }
-        
-        KingfisherManager.shared.retrieveImage(with: url) { (res) in
-            
-            switch res {
-            case .success(let img):
-                
-                let imageDetail = ImageDetailViewController(image: img.image)
-                imageDetail.modalPresentationStyle = .fullScreen
-                self.present(imageDetail, animated: true, completion: nil)
-            default:break
-            }
-        }
+        delegate?.onTappedImage()
     }
     
     @IBAction func download (_ sender: AnyObject) {

@@ -12,10 +12,12 @@ class CustomNavigationController: UINavigationController {
     override func viewDidLoad() {
         
         navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white, .font: UIFont.boldSystemFont(ofSize: 24)]
+        navigationBar.tintColor = .white
         
         navigationBar.setGradientBackground(colors: [
-                   UIColor.orange.cgColor,
-                   UIColor.systemPink.cgColor
+                   UIColor.systemPurple.cgColor,
+                   UIColor.systemPink.cgColor,
+                   UIColor.systemRed.cgColor
                    ])
      
     }

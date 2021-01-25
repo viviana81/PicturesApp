@@ -12,6 +12,7 @@
 		B955635825BDDE6E0057ECB2 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B955635625BDDE6E0057ECB2 /* ProfileViewController.swift */; };
 		B955635925BDDE6E0057ECB2 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B955635725BDDE6E0057ECB2 /* ProfileViewController.xib */; };
 		B955635D25BDE3D40057ECB2 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B955635C25BDE3D40057ECB2 /* ProfileCoordinator.swift */; };
+		B955636025BDF5DB0057ECB2 /* DetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B955635F25BDF5DB0057ECB2 /* DetailCoordinator.swift */; };
 		B96CA0A325B0482F002D262A /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B96CA0A225B0482F002D262A /* HomeViewController.xib */; };
 		B96CA0A825B04C4B002D262A /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96CA0A625B04C4B002D262A /* PhotoCollectionViewCell.swift */; };
 		B96CA0A925B04C4B002D262A /* PhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B96CA0A725B04C4B002D262A /* PhotoCollectionViewCell.xib */; };
@@ -58,6 +59,7 @@
 		B955635625BDDE6E0057ECB2 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		B955635725BDDE6E0057ECB2 /* ProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
 		B955635C25BDE3D40057ECB2 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
+		B955635F25BDF5DB0057ECB2 /* DetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCoordinator.swift; sourceTree = "<group>"; };
 		B96CA0A225B0482F002D262A /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		B96CA0A625B04C4B002D262A /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		B96CA0A725B04C4B002D262A /* PhotoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 				B9E457EF25B993720008EC52 /* ImageDetail */,
 				B9E457E925B74D7D0008EC52 /* DetailViewController.swift */,
 				B9E457EA25B74D7D0008EC52 /* DetailViewController.xib */,
+				B955635F25BDF5DB0057ECB2 /* DetailCoordinator.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -505,6 +508,7 @@
 				B96CA0B525B0826A002D262A /* Services.swift in Sources */,
 				B9C63C0125B59C3E00C6F768 /* HeaderView.swift in Sources */,
 				B96CA0CB25B09AFF002D262A /* HomeCoordinator.swift in Sources */,
+				B955636025BDF5DB0057ECB2 /* DetailCoordinator.swift in Sources */,
 				B96CA0B025B04EFB002D262A /* Models.swift in Sources */,
 				B955635825BDDE6E0057ECB2 /* ProfileViewController.swift in Sources */,
 				B9E457EB25B74D7D0008EC52 /* DetailViewController.swift in Sources */,

@@ -30,6 +30,7 @@ class SearchCoordinator: Coordinator {
 }
 
 extension SearchCoordinator: SearchViewControllerDelegate {
+    
     func searchPhoto(withQuery query: String) {
         searchViewController.status = .searching
         services.search(query: query) { [weak self] searchedResp, error in
@@ -41,5 +42,10 @@ extension SearchCoordinator: SearchViewControllerDelegate {
                 }
             }
         }
+    }
+    
+    func openDetail(searchedPhoto: Photo) {
+        let detail = DetailViewController(photo: searchedPhoto)
+        self.searchViewController.present(detail, animated: true, completion: nil)
     }
 }

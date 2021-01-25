@@ -29,6 +29,7 @@ class TopicsCoordinator: Coordinator {
 }
 
 extension TopicsCoordinator: TopicsViewControllerDelegate {
+   
     func getTopics() {
         services.getTopics(page: page) { [ weak self ] topics, error in
             self?.page += 1
@@ -40,5 +41,10 @@ extension TopicsCoordinator: TopicsViewControllerDelegate {
                 }
             }
         }
+    }
+    
+    func openDetail(photo: Photo) {
+        let detail = DetailViewController(photo: photo)
+        self.topicsViewController.present(detail, animated: true, completion: nil)
     }
 }

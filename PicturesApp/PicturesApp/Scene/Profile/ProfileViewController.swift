@@ -18,6 +18,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var firstNameLabel: UILabel!
     @IBOutlet weak var lastNameLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var userImage: UIImageView!
     
     weak var delegate: ProfileViewControllerDelegate?
@@ -28,16 +29,27 @@ class ProfileViewController: UIViewController {
             firstNameLabel.text = user.firstName
             lastNameLabel.text = user.lastName
             usernameLabel.text = user.username
-            if let image = URL(string:user.imageProfile.small) {
+            locationLabel.text = user.location
+            if let image = URL(string: user.imageProfile.small) {
                 userImage.kf.setImage(with: image)
+                loadingView.isHidden = true
             }
         }
     }
+    
+    lazy var loadingView: LoadingView = {
+        let view = LoadingView()
+        view.backgroundColor = .white
+        view.isHidden = true
+        return view
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         title = "Profile"
         delegate?.getCurrentUser()
+        loadingView.isHidden = false
+        loadingView.pin(to: view)
     }
 }
