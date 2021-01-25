@@ -15,7 +15,7 @@ struct ApiServices: Services {
     let decoder: JSONDecoder
     
     init() {
-       
+        
         decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .iso8601
     }
@@ -90,4 +90,17 @@ struct ApiServices: Services {
             }
         }
     }
+    
+    func getCollections(completion: @escaping ([Collection]?, Error?) -> Void) {
+        provider.request(.getCollections) { result in
+            switch result {
+            case .success(let response):
+                let collections = try? decoder.decode([Collection].self, from: response.data)
+                completion(collections, nil)
+            case .failure(let error):
+                completion(nil, error)
+            }
+        }
+    }
 }
+

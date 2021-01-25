@@ -15,6 +15,7 @@ enum PicturesApi {
     case getToken(code: String)
     case getMe
     case likePhoto(id: String)
+    case getCollections
 }
 
 extension PicturesApi: TargetType {
@@ -41,12 +42,14 @@ extension PicturesApi: TargetType {
             return "me"
         case .likePhoto(let id):
             return "photos/\(id)/like"
+        case .getCollections:
+            return "collections"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .getPhotos, .getTopics, .search, .getMe:
+        case .getPhotos, .getTopics, .search, .getMe, .getCollections:
             return .get
         case .getToken, .likePhoto:
             return .post
@@ -72,7 +75,7 @@ extension PicturesApi: TargetType {
                                                    "grant_type": "authorization_code"], encoding: URLEncoding.default)
         case .likePhoto(let id):
             return .requestParameters(parameters: ["id": id], encoding: URLEncoding.default)
-        case .getMe:
+        case .getMe, .getCollections:
             return .requestPlain
 
         }

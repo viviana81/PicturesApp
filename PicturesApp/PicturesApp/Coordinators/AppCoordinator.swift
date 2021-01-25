@@ -26,15 +26,18 @@ class AppCoordinator: Coordinator {
         let homeCoordinator = HomeCoordinator(window: window, services: services)
         let topicsCoordinator = TopicsCoordinator(window: window, services: services)
         let searchCoordinator = SearchCoordinator(window: window, services: services)
+        let collectionsCoordinator = CollectionCoordinator(window: window, services: services)
         
         coordinators.append(homeCoordinator)
         coordinators.append(topicsCoordinator)
         coordinators.append(searchCoordinator)
+        coordinators.append(collectionsCoordinator)
         
         tabBarController.viewControllers = [
             homeCoordinator.navigation,
             topicsCoordinator.navigation,
-            searchCoordinator.navigation
+            searchCoordinator.navigation,
+            collectionsCoordinator.navigation
         ]
         
         coordinators.forEach { $0.start() } // lanciamo tutti gli start dei coordinators

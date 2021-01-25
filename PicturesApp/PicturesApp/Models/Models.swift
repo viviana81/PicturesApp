@@ -17,7 +17,7 @@ struct Photo: Codable {
     let likes: Int?
     let width: Int?
     let height: Int?
-    let userLiked: Bool
+    let userLiked: Bool?
     
     enum CodingKeys: String, CodingKey {
         case created = "created_at"
@@ -90,5 +90,19 @@ struct Token: Codable {
         case type =  "token_type"
         case created = "created_at"
         case scope
+    }
+}
+
+struct Collection: Codable {
+    let id: String
+    let title: String
+    let user: User?
+    let cover: Photo
+    let previewPhotos: [Photo]
+    
+    enum CodingKeys: String, CodingKey {
+        case cover = "cover_photo"
+        case previewPhotos = "preview_photos"
+        case title, user, id
     }
 }
