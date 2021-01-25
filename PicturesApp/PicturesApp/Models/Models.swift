@@ -17,9 +17,11 @@ struct Photo: Codable {
     let likes: Int?
     let width: Int?
     let height: Int?
+    let userLiked: Bool
     
     enum CodingKeys: String, CodingKey {
         case created = "created_at"
+        case userLiked = "liked_by_user"
         case id, description, urls, color, user, likes, width, height
     }
 }

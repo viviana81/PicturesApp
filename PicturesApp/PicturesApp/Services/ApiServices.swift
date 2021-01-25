@@ -9,7 +9,7 @@ import Foundation
 import Moya
 
 struct ApiServices: Services {
-   
+    
     let provider = MoyaProvider<PicturesApi>(plugins: [NetworkLoggerPlugin(verbose: false, cURL: true)])
     
     let decoder: JSONDecoder
@@ -76,6 +76,17 @@ struct ApiServices: Services {
                 completion(currentUser, nil)
             case .failure(let error):
                 completion(nil, error)
+            }
+        }
+    }
+    
+    func likePhoto(id: String, completion: @escaping (Bool, Error?) -> Void) {
+        provider.request(.likePhoto(id: id)) { result in
+            switch result {
+            case.success:
+                completion(true, nil)
+            case .failure(let error):
+                completion(false, error)
             }
         }
     }

@@ -10,6 +10,7 @@ import Kingfisher
 
 protocol DetailViewControllerDelegate: class {
     func onTappedImage()
+    func onTapLike(onPhoto photo: Photo)
 }
 
 class DetailViewController: UIViewController {
@@ -27,6 +28,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var likeLabel: UILabel!
     @IBOutlet weak var sizeLabel: UILabel!
+    @IBOutlet weak var addLike: UIButton!
     
     weak var delegate: DetailViewControllerDelegate?
     private let photo: Photo
@@ -116,6 +118,10 @@ class DetailViewController: UIViewController {
         let imageTap = UITapGestureRecognizer(target: self, action: #selector(DetailViewController.onImageTap(_:)))
         photoImage.addGestureRecognizer(imageTap)
         photoImage.isUserInteractionEnabled = true
+        
+        if photo.userLiked == true {
+            addLike.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        }
     }
     
     @objc
@@ -139,5 +145,9 @@ class DetailViewController: UIViewController {
             ac.addAction(UIAlertAction(title: "OK", style: .default))
             present(ac, animated: true)
         }
+    }
+    
+    @IBAction func putLike() {
+        delegate?.onTapLike(onPhoto: photo)
     }
 }

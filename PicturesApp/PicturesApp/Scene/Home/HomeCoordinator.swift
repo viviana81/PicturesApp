@@ -44,14 +44,14 @@ extension HomeCoordinator: HomeViewControllerDelegate {
     }
     
     func onPhotoTap(photo: Photo) {
-        let detailCoordinator = DetailCoordinator(navigation: navigation, photo: photo)
+        let detailCoordinator = DetailCoordinator(navigation: navigation, photo: photo, services: services)
         detailCoordinator.start()
         coordinators.append(detailCoordinator)
     }
     
     func login() {
         homeViewController.showAlert(withTitle: "Login", andMessage: "Vuoi effettuare il login", showCancel: true) {
-              if let url = URL(string: "https://unsplash.com/oauth/authorize?client_id=bXdSj1vu0gOXPwaT7vDBDT1mWZF7CE9CYHHsqfj1O9k&redirect_uri=picturesapp:&response_type=code&scope=public") {
+              if let url = URL(string: "https://unsplash.com/oauth/authorize?client_id=bXdSj1vu0gOXPwaT7vDBDT1mWZF7CE9CYHHsqfj1O9k&redirect_uri=picturesapp:&response_type=code&scope=public+write_likes+read_user") {
                   UIApplication.shared.open(url, options: [:], completionHandler: nil)
                 self.homeViewController.showAlert(withTitle: "Complimenti", andMessage: "Hai appena effettuato l'accesso", showCancel: false, completion: nil)
               }

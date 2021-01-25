@@ -14,4 +14,5 @@ protocol Services {
     func search(query: String, completion: @escaping(SearchedResponse<Photo>?, Error?) -> Void)
     func getToken(code: String, completion: @escaping(Token?, Error?) -> Void)
     func getMe(completion: @escaping(User?, Error?) -> Void)
+    func likePhoto(id: String, completion: @escaping(Bool, Error?) -> Void)
 }

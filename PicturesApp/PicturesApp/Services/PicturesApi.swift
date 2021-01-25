@@ -14,6 +14,7 @@ enum PicturesApi {
     case search(query: String)
     case getToken(code: String)
     case getMe
+    case likePhoto(id: String)
 }
 
 extension PicturesApi: TargetType {
@@ -38,6 +39,8 @@ extension PicturesApi: TargetType {
             return "oauth/token"
         case .getMe:
             return "me"
+        case .likePhoto(let id):
+            return "photos/\(id)/like"
         }
     }
     
@@ -45,8 +48,9 @@ extension PicturesApi: TargetType {
         switch self {
         case .getPhotos, .getTopics, .search, .getMe:
             return .get
-        case .getToken:
+        case .getToken, .likePhoto:
             return .post
+        
         }
     }
     
@@ -66,6 +70,8 @@ extension PicturesApi: TargetType {
                                                    "client_secret": "G9nvKoXT14NqIrVdB7bsOtE5Gwd80zWoH-8jvOuR53A",
                                                    "redirect_uri": "picturesapp:",
                                                    "grant_type": "authorization_code"], encoding: URLEncoding.default)
+        case .likePhoto(let id):
+            return .requestParameters(parameters: ["id": id], encoding: URLEncoding.default)
         case .getMe:
             return .requestPlain
 

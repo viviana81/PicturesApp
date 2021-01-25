@@ -5,11 +5,13 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailViewController" customModule="PicturesApp" customModuleProvider="target">
             <connections>
+                <outlet property="addLike" destination="9hW-hG-GQQ" id="oqU-70-3Dw"/>
                 <outlet property="dateLabel" destination="bfa-Hl-E6G" id="hst-8s-JpX"/>
                 <outlet property="descriptionLabel" destination="SgI-SX-rIq" id="LJL-yN-f8w"/>
                 <outlet property="descriptionTitleLabel" destination="GS8-vq-7nK" id="P7E-lJ-m4b"/>
@@ -125,6 +127,16 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9hW-hG-GQQ">
+                    <rect key="frame" x="359.5" y="404" width="25.5" height="22"/>
+                    <color key="tintColor" systemColor="systemRedColor"/>
+                    <state key="normal">
+                        <imageReference key="image" image="heart" catalog="system" symbolScale="large"/>
+                    </state>
+                    <connections>
+                        <action selector="putLike" destination="-1" eventType="touchUpInside" id="Tma-Ff-H6r"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -141,11 +153,13 @@
                 <constraint firstItem="SgI-SX-rIq" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="CkU-bE-2tp"/>
                 <constraint firstItem="GS8-vq-7nK" firstAttribute="top" secondItem="ekg-be-X5t" secondAttribute="bottom" constant="24" id="Dwb-58-CGo"/>
                 <constraint firstItem="9Qz-oR-UUo" firstAttribute="top" secondItem="bfa-Hl-E6G" secondAttribute="bottom" constant="13" id="EgC-nf-ZiJ"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="9hW-hG-GQQ" secondAttribute="trailing" constant="29" id="FTw-og-JeJ"/>
                 <constraint firstItem="Nyz-Ac-QrU" firstAttribute="trailing" secondItem="DZb-Hc-Xtf" secondAttribute="trailing" id="FpC-Nc-fla"/>
                 <constraint firstItem="GS8-vq-7nK" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="HMk-aY-PZh"/>
                 <constraint firstItem="BjR-ZY-ic3" firstAttribute="top" secondItem="bfa-Hl-E6G" secondAttribute="bottom" constant="8" symbolic="YES" id="Ii5-Sa-04s"/>
                 <constraint firstItem="3sH-nc-oJJ" firstAttribute="top" secondItem="tgY-2a-vny" secondAttribute="bottom" constant="16" id="QW8-vz-DpU"/>
                 <constraint firstItem="Nyz-Ac-QrU" firstAttribute="top" secondItem="DZb-Hc-Xtf" secondAttribute="bottom" constant="7.5" id="SJ4-89-OyY"/>
+                <constraint firstItem="9hW-hG-GQQ" firstAttribute="bottom" secondItem="tgY-2a-vny" secondAttribute="bottom" constant="-20" id="V7T-fv-yMc"/>
                 <constraint firstItem="cqq-JY-HGl" firstAttribute="top" secondItem="BjR-ZY-ic3" secondAttribute="bottom" constant="19" id="VsH-aU-iNE"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="SgI-SX-rIq" secondAttribute="trailing" constant="16" id="Xvj-LS-2Ev"/>
                 <constraint firstItem="1XC-mN-y7e" firstAttribute="leading" secondItem="tgY-2a-vny" secondAttribute="leading" id="Y8y-1z-PBr"/>
@@ -171,8 +185,12 @@
         </view>
     </objects>
     <resources>
+        <image name="heart" catalog="system" width="128" height="109"/>
         <image name="heart.fill" catalog="system" width="128" height="109"/>
         <image name="square.and.arrow.up.fill" catalog="system" width="115" height="128"/>
         <image name="square.on.square.squareshape.controlhandles" catalog="system" width="128" height="116"/>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

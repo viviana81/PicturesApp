@@ -13,10 +13,12 @@ class DetailCoordinator: Coordinator {
     private let photo: Photo
     let detailViewController: DetailViewController
     let navigation: UINavigationController
+    let services: Services
     
-    init(navigation: UINavigationController, photo: Photo) {
+    init(navigation: UINavigationController, photo: Photo, services: Services) {
         self.navigation = navigation
         self.photo = photo
+        self.services = services
         detailViewController = DetailViewController(photo: photo)
         
     }
@@ -28,6 +30,7 @@ class DetailCoordinator: Coordinator {
 }
 
 extension DetailCoordinator: DetailViewControllerDelegate {
+   
     func onTappedImage() {
         guard let url = URL(string: photo.urls.full) else { return }
         
@@ -44,11 +47,14 @@ extension DetailCoordinator: DetailViewControllerDelegate {
         }
     }
     
-    func onDowloadedImage() {
-       
-    }
-    
-    func onSavedImage() {
-        
+    func onTapLike(onPhoto photo: Photo) {
+        services.likePhoto(id: photo.id) { [weak self] res, error in
+            if res {
+                self?.detailViewController.showAlert(andMessage: "Hai aggiunto correttamento il tuo like a questa foto")
+                self?.detailViewController.addLike.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            } else {
+                self?.detailViewController.showAlert(andMessage: "Non hai aggiunto correttamente il tuo like a questa foto")
+            }
+        }
     }
 }
