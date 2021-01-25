@@ -1,5 +1,5 @@
 //
-//  CollectionsViewController.swift
+//  CollectionDetailViewController.swift
 //  PicturesApp
 //
 //  Created by Viviana Capolvenere on 25/01/21.
@@ -7,39 +7,41 @@
 
 import UIKit
 
-protocol CollectionsViewControllerDelegate: class {
-    func getCollections()
-    func onCollectionTap(collection: Collection)
+protocol CollectionDetailViewControllerDelegate: class {
+    func onPhotoTap(photo: Photo)
 }
 
-class CollectionsViewController: UIViewController {
+class CollectionDetailViewController: UIViewController {
 
     // MARK: - Vars
-    lazy var folderCollection: UICollectionView = {
+    lazy var photoCollection: UICollectionView = {
         let collection = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
+        collection.register(PhotoCollectionViewCell.self)
         collection.backgroundColor = .clear
-        collection.dataSource = self
         collection.delegate = self
-        collection.register(FolderCollectionViewCell.self)
+        collection.dataSource = self
         return collection
     }()
+    weak var delegate: CollectionDetailViewControllerDelegate?
     
-    var collections: [Collection] = [] {
-        didSet {
-            folderCollection.reloadData()
-        }
+    private let collection: Collection
+    
+    init(collection: Collection) {
+        self.collection = collection
+        super.init(nibName: nil, bundle: nil)
     }
     
-    weak var delegate: CollectionsViewControllerDelegate?
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
-    // MARK: - Viewcontroller lifecycle
+    // MARK: - viewcontroller lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "Collections"
-        view.backgroundColor = UIColor(named: "mercury")
-        folderCollection.pin(to: view, insets: UIEdgeInsets(top: 16, left: 16, bottom: 0, right: 16))
-        delegate?.getCollections()
+        photoCollection.pin(to: view)
+        view.backgroundColor = .white
     }
     
     // MARK: - Actions
@@ -52,13 +54,12 @@ class CollectionsViewController: UIViewController {
         item.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
         
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                               heightDimension: .absolute(250))
+                                               heightDimension: .absolute(150))
         
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize,
-                                                       subitem: item, count: 1)
+                                                       subitem: item, count: 2)
         
-        group.interItemSpacing = .fixed(CGFloat(20))
-        group.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
+        group.interItemSpacing = .fixed(CGFloat(10))
         
         let section = NSCollectionLayoutSection(group: group)
         
@@ -66,21 +67,21 @@ class CollectionsViewController: UIViewController {
         return layout
     }
 }
-extension CollectionsViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+
+extension CollectionDetailViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return collections.count
+        return collection.previewPhotos.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell: FolderCollectionViewCell = folderCollection.dequeueReusableCell(for: indexPath)
-        let collection = collections[indexPath.item]
-        cell.configure(withCollection: collection)
+        let cell: PhotoCollectionViewCell = photoCollection.dequeueReusableCell(for: indexPath)
+        let photo = collection.previewPhotos[indexPath.item]
+        cell.configure(withPhoto: photo)
         return cell
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let collection = collections[indexPath.item]
-        delegate?.onCollectionTap(collection: collection)
-        
+        let photo = collection.previewPhotos[indexPath.item]
+        delegate?.onPhotoTap(photo: photo)
     }
 }
