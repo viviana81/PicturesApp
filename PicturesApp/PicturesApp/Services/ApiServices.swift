@@ -113,4 +113,8 @@ struct ApiServices: Services {
             }
         }
     }
+    
+    func addCollection(completion: @escaping (Bool, Error?) -> Void) {
+        
+    }
 }

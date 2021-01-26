@@ -10,6 +10,7 @@ import UIKit
 protocol CollectionsViewControllerDelegate: class {
     func getCollections()
     func onCollectionTap(collection: Collection)
+    
 }
 
 class CollectionsViewController: UIViewController {
@@ -35,11 +36,11 @@ class CollectionsViewController: UIViewController {
     // MARK: - Viewcontroller lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        title = "Collections"
+        
         view.backgroundColor = UIColor(named: "mercury")
         folderCollection.pin(to: view, insets: UIEdgeInsets(top: 16, left: 16, bottom: 0, right: 16))
         delegate?.getCollections()
+        
     }
     
     // MARK: - Actions
@@ -66,6 +67,7 @@ class CollectionsViewController: UIViewController {
         return layout
     }
 }
+
 extension CollectionsViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return collections.count

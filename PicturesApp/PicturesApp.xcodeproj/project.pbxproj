@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		38F9086F4E3A13DEF029AC88 /* Pods_PicturesApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EA790C824F8ACAA5A075942 /* Pods_PicturesApp.framework */; };
+		B9520C4F25C07735003C7445 /* MyCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9520C4E25C07735003C7445 /* MyCollectionViewController.swift */; };
 		B955635225BB28500057ECB2 /* UserDefaultsConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = B955635125BB28500057ECB2 /* UserDefaultsConfig.swift */; };
 		B955635825BDDE6E0057ECB2 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B955635625BDDE6E0057ECB2 /* ProfileViewController.swift */; };
 		B955635925BDDE6E0057ECB2 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B955635725BDDE6E0057ECB2 /* ProfileViewController.xib */; };
@@ -20,6 +21,11 @@
 		B955637025BF24320057ECB2 /* FolderCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B955636E25BF24320057ECB2 /* FolderCollectionViewCell.xib */; };
 		B955637625BF2F880057ECB2 /* CollectionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B955637425BF2F880057ECB2 /* CollectionDetailViewController.swift */; };
 		B955637725BF2F880057ECB2 /* CollectionDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B955637525BF2F880057ECB2 /* CollectionDetailViewController.xib */; };
+		B955637D25C018720057ECB2 /* AddCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B955637B25C018720057ECB2 /* AddCollectionViewController.swift */; };
+		B955637E25C018720057ECB2 /* AddCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B955637C25C018720057ECB2 /* AddCollectionViewController.xib */; };
+		B955638425C023640057ECB2 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B955638225C023640057ECB2 /* ContainerViewController.swift */; };
+		B955638525C023640057ECB2 /* ContainerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B955638325C023640057ECB2 /* ContainerViewController.xib */; };
+		B955639225C023950057ECB2 /* MyCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B955639025C023950057ECB2 /* MyCollectionViewController.xib */; };
 		B96CA0A325B0482F002D262A /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B96CA0A225B0482F002D262A /* HomeViewController.xib */; };
 		B96CA0A825B04C4B002D262A /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96CA0A625B04C4B002D262A /* PhotoCollectionViewCell.swift */; };
 		B96CA0A925B04C4B002D262A /* PhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B96CA0A725B04C4B002D262A /* PhotoCollectionViewCell.xib */; };
@@ -62,6 +68,7 @@
 		2EAB281391B53CCD03ED6E45 /* Pods-PicturesApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PicturesApp.debug.xcconfig"; path = "Target Support Files/Pods-PicturesApp/Pods-PicturesApp.debug.xcconfig"; sourceTree = "<group>"; };
 		4EA790C824F8ACAA5A075942 /* Pods_PicturesApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PicturesApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BBAFDAC323917F1B16E2B4E /* Pods-PicturesApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PicturesApp.release.xcconfig"; path = "Target Support Files/Pods-PicturesApp/Pods-PicturesApp.release.xcconfig"; sourceTree = "<group>"; };
+		B9520C4E25C07735003C7445 /* MyCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectionViewController.swift; sourceTree = "<group>"; };
 		B955635125BB28500057ECB2 /* UserDefaultsConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsConfig.swift; sourceTree = "<group>"; };
 		B955635625BDDE6E0057ECB2 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		B955635725BDDE6E0057ECB2 /* ProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
@@ -74,6 +81,11 @@
 		B955636E25BF24320057ECB2 /* FolderCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FolderCollectionViewCell.xib; sourceTree = "<group>"; };
 		B955637425BF2F880057ECB2 /* CollectionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionDetailViewController.swift; sourceTree = "<group>"; };
 		B955637525BF2F880057ECB2 /* CollectionDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionDetailViewController.xib; sourceTree = "<group>"; };
+		B955637B25C018720057ECB2 /* AddCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCollectionViewController.swift; sourceTree = "<group>"; };
+		B955637C25C018720057ECB2 /* AddCollectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddCollectionViewController.xib; sourceTree = "<group>"; };
+		B955638225C023640057ECB2 /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
+		B955638325C023640057ECB2 /* ContainerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContainerViewController.xib; sourceTree = "<group>"; };
+		B955639025C023950057ECB2 /* MyCollectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyCollectionViewController.xib; sourceTree = "<group>"; };
 		B96CA0A225B0482F002D262A /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		B96CA0A625B04C4B002D262A /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		B96CA0A725B04C4B002D262A /* PhotoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -143,6 +155,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		B9520C4D25C0769B003C7445 /* MyCollections */ = {
+			isa = PBXGroup;
+			children = (
+				B9520C4E25C07735003C7445 /* MyCollectionViewController.swift */,
+				B955639025C023950057ECB2 /* MyCollectionViewController.xib */,
+			);
+			path = MyCollections;
+			sourceTree = "<group>";
+		};
 		B955635025BB28360057ECB2 /* Utilites */ = {
 			isa = PBXGroup;
 			children = (
@@ -164,6 +185,7 @@
 		B955636225BF1A660057ECB2 /* Collections */ = {
 			isa = PBXGroup;
 			children = (
+				B955637325BF2F560057ECB2 /* CollectionDetail */,
 				B955636C25BF24180057ECB2 /* Cell */,
 				B955636325BF1A7C0057ECB2 /* CollectionsViewController.swift */,
 				B955636425BF1A7C0057ECB2 /* CollectionsViewController.xib */,
@@ -188,6 +210,34 @@
 				B955637525BF2F880057ECB2 /* CollectionDetailViewController.xib */,
 			);
 			path = CollectionDetail;
+			sourceTree = "<group>";
+		};
+		B955637A25C0184A0057ECB2 /* AddCollection */ = {
+			isa = PBXGroup;
+			children = (
+				B955637B25C018720057ECB2 /* AddCollectionViewController.swift */,
+				B955637C25C018720057ECB2 /* AddCollectionViewController.xib */,
+			);
+			path = AddCollection;
+			sourceTree = "<group>";
+		};
+		B955638125C023490057ECB2 /* Container */ = {
+			isa = PBXGroup;
+			children = (
+				B955638225C023640057ECB2 /* ContainerViewController.swift */,
+				B955638325C023640057ECB2 /* ContainerViewController.xib */,
+				B955638825C0236B0057ECB2 /* Child */,
+			);
+			path = Container;
+			sourceTree = "<group>";
+		};
+		B955638825C0236B0057ECB2 /* Child */ = {
+			isa = PBXGroup;
+			children = (
+				B955636225BF1A660057ECB2 /* Collections */,
+				B9520C4D25C0769B003C7445 /* MyCollections */,
+			);
+			path = Child;
 			sourceTree = "<group>";
 		};
 		B96CA09F25B04709002D262A /* Home */ = {
@@ -381,8 +431,8 @@
 		B9E68FEC25B041EA0028EAE5 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
-				B955637325BF2F560057ECB2 /* CollectionDetail */,
-				B955636225BF1A660057ECB2 /* Collections */,
+				B955638125C023490057ECB2 /* Container */,
+				B955637A25C0184A0057ECB2 /* AddCollection */,
 				B955635525BDDE4E0057ECB2 /* Profile */,
 				B9E457D725B6D15B0008EC52 /* NavigationController */,
 				B9E457E825B74D5E0008EC52 /* Detail */,
@@ -467,13 +517,16 @@
 				B9E457EC25B74D7D0008EC52 /* DetailViewController.xib in Resources */,
 				B955637025BF24320057ECB2 /* FolderCollectionViewCell.xib in Resources */,
 				B955637725BF2F880057ECB2 /* CollectionDetailViewController.xib in Resources */,
+				B955639225C023950057ECB2 /* MyCollectionViewController.xib in Resources */,
 				B9C63BF425B4B35900C6F768 /* SearchViewController.xib in Resources */,
 				B9E68FDF25B041CA0028EAE5 /* Assets.xcassets in Resources */,
 				B955636625BF1A7D0057ECB2 /* CollectionsViewController.xib in Resources */,
 				B9C63BEC25B4B2B600C6F768 /* TopicsViewController.xib in Resources */,
+				B955637E25C018720057ECB2 /* AddCollectionViewController.xib in Resources */,
 				B9E457F325B993B70008EC52 /* ImageDetailViewController.xib in Resources */,
 				B955635925BDDE6E0057ECB2 /* ProfileViewController.xib in Resources */,
 				B96CA0A325B0482F002D262A /* HomeViewController.xib in Resources */,
+				B955638525C023640057ECB2 /* ContainerViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -551,6 +604,7 @@
 				B9E457E625B746880008EC52 /* UIViewController.swift in Sources */,
 				B96CA0A825B04C4B002D262A /* PhotoCollectionViewCell.swift in Sources */,
 				B9E457E325B745710008EC52 /* UISearchBar.swift in Sources */,
+				B955638425C023640057ECB2 /* ContainerViewController.swift in Sources */,
 				B96CA0C525B09985002D262A /* AppCoordinator.swift in Sources */,
 				B9E68FD625B041C50028EAE5 /* AppDelegate.swift in Sources */,
 				B96CA0B525B0826A002D262A /* Services.swift in Sources */,
@@ -565,6 +619,7 @@
 				B9C63BE425B1F4E700C6F768 /* UIView+Pin.swift in Sources */,
 				B9E457F225B993B70008EC52 /* ImageDetailViewController.swift in Sources */,
 				B9C63BF325B4B35900C6F768 /* SearchViewController.swift in Sources */,
+				B9520C4F25C07735003C7445 /* MyCollectionViewController.swift in Sources */,
 				B96CA0C825B09996002D262A /* Coordinator.swift in Sources */,
 				B96CA0B825B084DC002D262A /* PicturesApi.swift in Sources */,
 				B955635225BB28500057ECB2 /* UserDefaultsConfig.swift in Sources */,
@@ -576,6 +631,7 @@
 				B9C63BFC25B5841200C6F768 /* TopicsCollectionViewCell.swift in Sources */,
 				B96CA0AD25B04C70002D262A /* Reusable.swift in Sources */,
 				B955637625BF2F880057ECB2 /* CollectionDetailViewController.swift in Sources */,
+				B955637D25C018720057ECB2 /* AddCollectionViewController.swift in Sources */,
 				B9C63C0425B5E0A900C6F768 /* UINavigationBar.swift in Sources */,
 				B955635D25BDE3D40057ECB2 /* ProfileCoordinator.swift in Sources */,
 				B9E457DE25B6D37F0008EC52 /* LoadingView.swift in Sources */,

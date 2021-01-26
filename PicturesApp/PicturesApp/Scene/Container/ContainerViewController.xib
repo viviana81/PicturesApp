@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ContainerViewController" customModule="PicturesApp" customModuleProvider="target">
+            <connections>
+                <outlet property="containerView" destination="LHz-fh-vvR" id="hFj-bf-7cG"/>
+                <outlet property="segmentedControl" destination="38E-T1-K9S" id="Kym-Kb-7cZ"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="38E-T1-K9S">
+                    <rect key="frame" x="20" y="76" width="374" height="32"/>
+                    <color key="backgroundColor" systemColor="systemPinkColor"/>
+                    <segments>
+                        <segment title="Collection"/>
+                        <segment title="My collection"/>
+                    </segments>
+                    <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <connections>
+                        <action selector="onCollectionChanged:" destination="-1" eventType="valueChanged" id="geP-Ur-jwC"/>
+                    </connections>
+                </segmentedControl>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LHz-fh-vvR" userLabel="ContainerView">
+                    <rect key="frame" x="0.0" y="119" width="414" height="777"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="LHz-fh-vvR" firstAttribute="top" secondItem="38E-T1-K9S" secondAttribute="bottom" constant="12" id="TDP-Fy-DsF"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="38E-T1-K9S" secondAttribute="trailing" constant="20" id="UtA-or-Cfi"/>
+                <constraint firstAttribute="bottom" secondItem="LHz-fh-vvR" secondAttribute="bottom" id="W3O-z2-eYU"/>
+                <constraint firstItem="38E-T1-K9S" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="32" id="b5s-eK-1cu"/>
+                <constraint firstItem="LHz-fh-vvR" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="fFB-C9-Mfs"/>
+                <constraint firstItem="38E-T1-K9S" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="hE1-tD-Aee"/>
+                <constraint firstItem="LHz-fh-vvR" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="rr9-Wr-SQK"/>
+            </constraints>
+            <point key="canvasLocation" x="28.985507246376812" y="77.678571428571431"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

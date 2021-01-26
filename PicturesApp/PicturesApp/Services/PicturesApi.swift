@@ -17,6 +17,7 @@ enum PicturesApi {
     case likePhoto(id: String)
     case getCollections
     case unlikePhoto(id: String)
+    case addCollection(title: String, description: String?, privacy: Bool = false)
 }
 
 extension PicturesApi: TargetType {
@@ -43,7 +44,7 @@ extension PicturesApi: TargetType {
             return "me"
         case .likePhoto(let id), .unlikePhoto(let id):
             return "photos/\(id)/like"
-        case .getCollections:
+        case .getCollections, .addCollection:
             return "collections"
         
         }
@@ -53,7 +54,7 @@ extension PicturesApi: TargetType {
         switch self {
         case .getPhotos, .getTopics, .search, .getMe, .getCollections:
             return .get
-        case .getToken, .likePhoto:
+        case .getToken, .likePhoto, .addCollection:
             return .post
         case .unlikePhoto:
             return .delete
@@ -81,6 +82,11 @@ extension PicturesApi: TargetType {
             return .requestParameters(parameters: ["id": id], encoding: URLEncoding.default)
         case .getMe, .getCollections:
             return .requestPlain
+        case .addCollection(let title, let description, let privacy):
+            return .requestParameters(parameters: ["title": title,
+                                                   "description": description,
+                                                   "private": privacy],
+                                      encoding: JSONEncoding.default)
 
         }
     }

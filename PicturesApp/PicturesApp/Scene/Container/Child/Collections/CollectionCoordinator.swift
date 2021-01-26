@@ -11,33 +11,33 @@ class CollectionCoordinator: Coordinator {
     var coordinators: [Coordinator] = []
     let window: UIWindow
     let navigation: UINavigationController
-    var collectionsViewController: CollectionsViewController
+    let containerViewController: ContainerViewController
     let services: Services
     
     init(window: UIWindow, services: Services) {
         self.services = services
         self.window = window
-        collectionsViewController = CollectionsViewController()
-        navigation = CustomNavigationController(rootViewController: collectionsViewController)
+        containerViewController = ContainerViewController()
+        navigation = CustomNavigationController(rootViewController: containerViewController)
         navigation.tabBarItem = UITabBarItem(title: "Collections", image: UIImage(systemName: "photo.on.rectangle"), tag: 3)
-        // navigation.navigationItem.searchController = searchViewController.resultSearchController
         
     }
     
     func start() {
-        collectionsViewController.delegate = self
+        containerViewController.firstChild.delegate = self
+        
     }
 }
 
 extension CollectionCoordinator: CollectionsViewControllerDelegate {
-    
+   
     func getCollections() {
         services.getCollections { [weak self] collections, error in
             if let collections = collections {
-                self?.collectionsViewController.collections = collections
+                self?.containerViewController.firstChild.collections = collections
             } else {
                 if let error = error {
-                    self?.collectionsViewController.showAlert(andMessage: error.localizedDescription)
+                    self?.containerViewController.firstChild.showAlert(andMessage: error.localizedDescription)
                 }
             }
         }
@@ -53,6 +53,6 @@ extension CollectionCoordinator: CollectionsViewControllerDelegate {
 extension CollectionCoordinator: CollectionDetailViewControllerDelegate {
     func onPhotoTap(photo: Photo) {
         let photoDetail = DetailViewController(photo: photo)
-        self.collectionsViewController.present(photoDetail, animated: true, completion: nil)
+        self.containerViewController.firstChild.present(photoDetail, animated: true, completion: nil)
     }
 }
