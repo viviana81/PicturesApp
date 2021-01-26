@@ -16,6 +16,7 @@ enum PicturesApi {
     case getMe
     case likePhoto(id: String)
     case getCollections
+    case unlikePhoto(id: String)
 }
 
 extension PicturesApi: TargetType {
@@ -40,10 +41,11 @@ extension PicturesApi: TargetType {
             return "oauth/token"
         case .getMe:
             return "me"
-        case .likePhoto(let id):
+        case .likePhoto(let id), .unlikePhoto(let id):
             return "photos/\(id)/like"
         case .getCollections:
             return "collections"
+        
         }
     }
     
@@ -53,6 +55,8 @@ extension PicturesApi: TargetType {
             return .get
         case .getToken, .likePhoto:
             return .post
+        case .unlikePhoto:
+            return .delete
         
         }
     }
@@ -73,7 +77,7 @@ extension PicturesApi: TargetType {
                                                    "client_secret": "G9nvKoXT14NqIrVdB7bsOtE5Gwd80zWoH-8jvOuR53A",
                                                    "redirect_uri": "picturesapp:",
                                                    "grant_type": "authorization_code"], encoding: URLEncoding.default)
-        case .likePhoto(let id):
+        case .likePhoto(let id), .unlikePhoto(let id):
             return .requestParameters(parameters: ["id": id], encoding: URLEncoding.default)
         case .getMe, .getCollections:
             return .requestPlain

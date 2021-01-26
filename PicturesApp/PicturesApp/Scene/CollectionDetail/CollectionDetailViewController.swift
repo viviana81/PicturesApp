@@ -41,7 +41,7 @@ class CollectionDetailViewController: UIViewController {
         super.viewDidLoad()
 
         photoCollection.pin(to: view)
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(named: "mercury")
     }
     
     // MARK: - Actions
@@ -54,12 +54,13 @@ class CollectionDetailViewController: UIViewController {
         item.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
         
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                               heightDimension: .absolute(150))
+                                               heightDimension: .absolute(250))
         
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize,
-                                                       subitem: item, count: 2)
+                                                       subitem: item, count: 1)
         
         group.interItemSpacing = .fixed(CGFloat(10))
+        group.contentInsets = NSDirectionalEdgeInsets(top: 16, leading: 8, bottom: 16, trailing: 8)
         
         let section = NSCollectionLayoutSection(group: group)
         

@@ -10,6 +10,7 @@ import Kingfisher
 
 protocol ProfileViewControllerDelegate: class {
     func getCurrentUser()
+    func goToLogout()
 }
 
 class ProfileViewController: UIViewController {
@@ -51,5 +52,14 @@ class ProfileViewController: UIViewController {
         delegate?.getCurrentUser()
         loadingView.isHidden = false
         loadingView.pin(to: view)
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "power"), style: .done, target: self, action: #selector(logout))
+    }
+    
+    // MARK: - Actions
+    
+    @objc
+    func logout() {
+        delegate?.goToLogout()
     }
 }

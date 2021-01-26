@@ -58,14 +58,6 @@ extension HomeCoordinator: HomeViewControllerDelegate {
           }
     }
     
-    func logout() {
-        homeViewController.showAlert(withTitle: "Logout", andMessage: "Sei sicuro di volere effettuare il logout?", showCancel: true) {
-            
-            UserDefaultsConfig.token = nil
-            self.homeViewController.reloadButton()
-        }
-    }
-    
     func viewProfile() {
         let profileCoordinator = ProfileCoordinator(services: services, navigation: navigation)
         profileCoordinator.start()

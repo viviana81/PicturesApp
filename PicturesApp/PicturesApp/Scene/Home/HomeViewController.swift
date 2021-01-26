@@ -11,7 +11,6 @@ protocol HomeViewControllerDelegate: class {
     func getPhotos()
     func onPhotoTap(photo: Photo)
     func login()
-    func logout()
     func viewProfile()
 }
 
@@ -84,7 +83,7 @@ class HomeViewController: UIViewController {
     }
     
     func reloadButton() {
-        if let token = UserDefaultsConfig.token {
+        if UserDefaultsConfig.token != nil {
             navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "person.crop.circle"), style: .done, target: self, action: #selector(goToProfile))
             navigationItem.rightBarButtonItem!.tintColor = .white
         } else {

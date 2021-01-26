@@ -11,6 +11,7 @@ import Kingfisher
 protocol DetailViewControllerDelegate: class {
     func onTappedImage()
     func onTapLike(onPhoto photo: Photo)
+    func onDeleteLike(onPhoto photo: Photo)
 }
 
 class DetailViewController: UIViewController {
@@ -148,6 +149,10 @@ class DetailViewController: UIViewController {
     }
     
     @IBAction func putLike() {
-        delegate?.onTapLike(onPhoto: photo)
+        if photo.userLiked == false {
+            delegate?.onTapLike(onPhoto: photo)
+        } else {
+            delegate?.onDeleteLike(onPhoto: photo)
+        }
     }
 }

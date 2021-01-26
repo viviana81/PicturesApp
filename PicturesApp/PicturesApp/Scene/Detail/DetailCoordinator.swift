@@ -48,12 +48,23 @@ extension DetailCoordinator: DetailViewControllerDelegate {
     }
     
     func onTapLike(onPhoto photo: Photo) {
-        services.likePhoto(id: photo.id) { [weak self] res, error in
+        services.likePhoto(id: photo.id) { [weak self] res, _ in
             if res {
                 self?.detailViewController.showAlert(andMessage: "Hai aggiunto correttamento il tuo like a questa foto")
                 self?.detailViewController.addLike.setImage(UIImage(systemName: "heart.fill"), for: .normal)
             } else {
                 self?.detailViewController.showAlert(andMessage: "Non hai aggiunto correttamente il tuo like a questa foto")
+            }
+        }
+    }
+    
+    func onDeleteLike(onPhoto photo: Photo) {
+        services.unlikePhoto(id: photo.id) { [weak self] res, _ in
+            if res {
+                self?.detailViewController.showAlert(andMessage: "Hai rimosso correttamento il tuo like a questa foto")
+                self?.detailViewController.addLike.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            } else {
+                self?.detailViewController.showAlert(andMessage: "Non hai rimosso correttamente il tuo like a questa foto")
             }
         }
     }

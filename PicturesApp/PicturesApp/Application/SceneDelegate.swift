@@ -51,7 +51,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
        //     UserDefaultsConfig.code = value
      //   }
  
-        appCoordinator?.services.getToken(code: code) { (token, error) in
+        appCoordinator?.services.getToken(code: code) { token, _ in
             if let token = token {
                 UserDefaultsConfig.token = token.access
                 NotificationCenter.default.post(name: Notification.Name("refreshUser"), object: nil, userInfo: nil)
