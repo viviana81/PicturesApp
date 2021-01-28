@@ -71,18 +71,20 @@ class CollectionDetailViewController: UIViewController {
 
 extension CollectionDetailViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return collection.previewPhotos.count
+        return collection.previewPhotos?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let collectionsPhotos = collection.previewPhotos else { fatalError("Invalid")}
+        
         let cell: PhotoCollectionViewCell = photoCollection.dequeueReusableCell(for: indexPath)
-        let photo = collection.previewPhotos[indexPath.item]
+        let photo = collectionsPhotos[indexPath.item]
         cell.configure(withPhoto: photo)
         return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let photo = collection.previewPhotos[indexPath.item]
+        guard let photo = collection.previewPhotos?[indexPath.item] else { return }
         delegate?.onPhotoTap(photo: photo)
     }
 }

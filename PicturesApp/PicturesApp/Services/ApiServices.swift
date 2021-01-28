@@ -9,7 +9,7 @@ import Foundation
 import Moya
 
 struct ApiServices: Services {
-   
+    
     let provider = MoyaProvider<PicturesApi>(plugins: [NetworkLoggerPlugin(verbose: false, cURL: true)])
     
     let decoder: JSONDecoder
@@ -114,7 +114,26 @@ struct ApiServices: Services {
         }
     }
     
-    func addCollection(completion: @escaping (Bool, Error?) -> Void) {
-        
+    func addCollection(title: String, description: String, privacy: Bool, completion: @escaping (Bool, Error?) -> Void) {
+        provider.request(.addCollection(title: title, description: description, privacy: privacy)) { result in
+            switch result {
+            case .success:
+                completion(true, nil)
+            case .failure(let error):
+                completion(false, error)
+            }
+        }
+    }
+    
+    func getUserCollections(username: String, completion: @escaping ([Collection]?, Error?) -> Void) {
+        provider.request(.getUserCollections(username: username)) { result in
+            switch result {
+            case .success(let response):
+                let collections = try? decoder.decode([Collection].self, from: response.data)
+                completion(collections, nil)
+            case .failure(let error):
+                completion(nil, error)
+            }
+        }
     }
 }

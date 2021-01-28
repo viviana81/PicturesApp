@@ -35,12 +35,14 @@ struct User: Codable {
     let instagram: String?
     let imageProfile: ImageProfile
     let location: String?
+    let totalCollections: Int?
     
     enum CodingKeys: String, CodingKey {
         case instagram = "instagram_username"
         case imageProfile = "profile_image"
         case firstName = "first_name"
         case lastName = "last_name"
+        case totalCollections = "total_collections"
         case id, name, location, username
     }
 }
@@ -97,8 +99,8 @@ struct Collection: Codable {
     let id: String
     let title: String
     let user: User?
-    let cover: Photo
-    let previewPhotos: [Photo]
+    let cover: Photo?
+    let previewPhotos: [Photo]?
     
     enum CodingKeys: String, CodingKey {
         case cover = "cover_photo"

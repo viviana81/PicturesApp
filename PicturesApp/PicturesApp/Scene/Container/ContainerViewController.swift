@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol ContainerViewControllerDelegate: class {
+    func onTapNewCollection()
+}
+
 class ContainerViewController: UIViewController {
 
     @IBOutlet weak var segmentedControl: UISegmentedControl!
@@ -15,11 +19,23 @@ class ContainerViewController: UIViewController {
     let firstChild = CollectionsViewController()
     let secondChild = MyCollectionViewController()
     
+    weak var delegate: ContainerViewControllerDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         addChild(firstChild)
         self.containerView.addSubview(firstChild.view)
+        segmentedControl.setTitleTextAttributes([.foregroundColor: UIColor.purple, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17, weight: .bold)], for: .normal)
+        
+        segmentedControl.isHidden = false
+        
+        if UserDefaultsConfig.token == nil {
+            segmentedControl.isHidden = true
+            title = "Collections"
+            view.backgroundColor = UIColor(named: "mercury")
+        }
+        view.backgroundColor = UIColor(named: "mercury")
     }
     
     @IBAction func onCollectionChanged(_ sender: UISegmentedControl) {
@@ -37,8 +53,7 @@ class ContainerViewController: UIViewController {
     
     @objc
     func addCollection() {
-        let addCollection = AddCollectionViewController()
-         navigationController?.pushViewController(addCollection, animated: true)
+        delegate?.onTapNewCollection()
     }
     private func add(asChildViewController viewController: UIViewController) {
         // Add Child View Controller

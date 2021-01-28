@@ -9,6 +9,7 @@ target 'PicturesApp' do
    pod 'SwiftLint'
    pod 'Moya', '~> 13.0'
    pod 'Kingfisher'
+   pod 'PromiseKit'
 
 end
 

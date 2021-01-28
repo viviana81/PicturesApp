@@ -20,8 +20,10 @@ class FolderCollectionViewCell: UICollectionViewCell, Reusable {
     
     func configure(withCollection collection: Collection) {
         titleCollection.text = collection.title
-        if let cover = URL(string: collection.cover.urls.regular) {
+        if let curl = collection.cover, let cover = URL(string: curl.urls.regular) {
             coverImage.kf.setImage(with: cover)
+        } else {
+            coverImage.image = UIImage(named: "placeholder")
         }
     }
 }

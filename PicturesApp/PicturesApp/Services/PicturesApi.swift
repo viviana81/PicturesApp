@@ -17,7 +17,8 @@ enum PicturesApi {
     case likePhoto(id: String)
     case getCollections
     case unlikePhoto(id: String)
-    case addCollection(title: String, description: String?, privacy: Bool = false)
+    case addCollection(title: String, description: String, privacy: Bool = false)
+    case getUserCollections(username: String)
 }
 
 extension PicturesApi: TargetType {
@@ -46,13 +47,15 @@ extension PicturesApi: TargetType {
             return "photos/\(id)/like"
         case .getCollections, .addCollection:
             return "collections"
+        case .getUserCollections(let username):
+            return "users/\(username)/collections"
         
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .getPhotos, .getTopics, .search, .getMe, .getCollections:
+        case .getPhotos, .getTopics, .search, .getMe, .getCollections, .getUserCollections:
             return .get
         case .getToken, .likePhoto, .addCollection:
             return .post
@@ -87,6 +90,8 @@ extension PicturesApi: TargetType {
                                                    "description": description,
                                                    "private": privacy],
                                       encoding: JSONEncoding.default)
+        case .getUserCollections:
+            return .requestPlain
 
         }
     }

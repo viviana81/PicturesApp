@@ -21,6 +21,7 @@ class CollectionsViewController: UIViewController {
         collection.backgroundColor = .clear
         collection.dataSource = self
         collection.delegate = self
+        collection.backgroundColor = .white
         collection.register(FolderCollectionViewCell.self)
         return collection
     }()

@@ -7,12 +7,18 @@
 
 import UIKit
 
+protocol AddCollectionViewControllerDelegate: class {
+    func onTapAdd(title: String, description: String, privacy: Bool)
+}
+
 class AddCollectionViewController: UIViewController {
 
     @IBOutlet weak var shadowView: UIView!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var titleTxtField: UITextField!
+    @IBOutlet weak var descriptionTxtField: UITextField!
     @IBOutlet weak var privateSwitch: UISwitch!
+    
+    weak var delegate: AddCollectionViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +32,9 @@ class AddCollectionViewController: UIViewController {
     }
     
     @IBAction func saveCollection() {
-        
+        guard let title = titleTxtField.text,
+              let description = descriptionTxtField.text else { return }
+    
+        delegate?.onTapAdd(title: title, description: description, privacy: privateSwitch.isOn)
     }
 }

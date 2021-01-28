@@ -185,11 +185,10 @@
 		B955636225BF1A660057ECB2 /* Collections */ = {
 			isa = PBXGroup;
 			children = (
-				B955637325BF2F560057ECB2 /* CollectionDetail */,
-				B955636C25BF24180057ECB2 /* Cell */,
 				B955636325BF1A7C0057ECB2 /* CollectionsViewController.swift */,
 				B955636425BF1A7C0057ECB2 /* CollectionsViewController.xib */,
-				B955636925BF1A8C0057ECB2 /* CollectionCoordinator.swift */,
+				B955637325BF2F560057ECB2 /* CollectionDetail */,
+				B955636C25BF24180057ECB2 /* Cell */,
 			);
 			path = Collections;
 			sourceTree = "<group>";
@@ -224,6 +223,7 @@
 		B955638125C023490057ECB2 /* Container */ = {
 			isa = PBXGroup;
 			children = (
+				B955636925BF1A8C0057ECB2 /* CollectionCoordinator.swift */,
 				B955638225C023640057ECB2 /* ContainerViewController.swift */,
 				B955638325C023640057ECB2 /* ContainerViewController.xib */,
 				B955638825C0236B0057ECB2 /* Child */,

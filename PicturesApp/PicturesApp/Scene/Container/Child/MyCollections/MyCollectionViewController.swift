@@ -7,13 +7,71 @@
 
 import UIKit
 
+protocol MyCollectionViewControllerDelegate: class {
+    func getMyCollections()
+}
+
 class MyCollectionViewController: UIViewController {
-
+    
     // MARK: - Vars
-
+    
+    lazy var folderCollection: UICollectionView = {
+        let collection = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
+        collection.register(FolderCollectionViewCell.self)
+        collection.dataSource = self
+        collection.backgroundColor = .white
+        return collection
+    }()
+    
+    var collections: [Collection] = [] {
+        didSet {
+            folderCollection.reloadData()
+        }
+    }
+    
+    weak var delegate: MyCollectionViewControllerDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        view.backgroundColor = UIColor(named: "mercury")
+        folderCollection.pin(to: view, insets: UIEdgeInsets(top: 16, left: 16, bottom: 0, right: 16))
         
+        delegate?.getMyCollections()
+    }
+    
+    func createLayout() -> UICollectionViewLayout {
+        
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                              heightDimension: .fractionalHeight(1.0))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
+        
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                               heightDimension: .absolute(250))
+        
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize,
+                                                       subitem: item, count: 1)
+        
+        group.interItemSpacing = .fixed(CGFloat(20))
+        group.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
+        
+        let section = NSCollectionLayoutSection(group: group)
+        
+        let layout = UICollectionViewCompositionalLayout(section: section)
+        return layout
+    }
+    
+}
+
+extension MyCollectionViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return collections.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell: FolderCollectionViewCell = folderCollection.dequeueReusableCell(for: indexPath)
+        let collection = collections[indexPath.item]
+        cell.configure(withCollection: collection)
+        return cell
     }
 }
