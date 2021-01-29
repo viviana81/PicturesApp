@@ -19,4 +19,5 @@ protocol Services {
     func getCollections(completion: @escaping([Collection]?, Error?) -> Void)
     func addCollection(title: String, description: String, privacy: Bool, completion: @escaping(Bool, Error?) -> Void)
     func getUserCollections(username: String, completion: @escaping([Collection]?, Error?) -> Void)
+    func addPhotoToCollection(idPhoto: String, idCollection: String, completion: @escaping(Bool, Error?) -> Void)
 }

@@ -136,4 +136,15 @@ struct ApiServices: Services {
             }
         }
     }
+    
+    func addPhotoToCollection(idPhoto: String, idCollection: String, completion: @escaping (Bool, Error?) -> Void) {
+        provider.request(.addPhotoToCollection(idPhoto: idPhoto, idCollection: idCollection)) { result in
+            switch result {
+            case.success:
+                completion(true, nil)
+            case .failure(let error):
+                completion(false, error)
+            }
+        }
+    }
 }
