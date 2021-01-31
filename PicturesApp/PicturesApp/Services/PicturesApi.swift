@@ -94,7 +94,7 @@ extension PicturesApi: TargetType {
                                                    "private": privacy],
                                       encoding: JSONEncoding.default)
         case .addPhotoToCollection(let idPhoto, let idCollection):
-            return .requestParameters(parameters: ["idPhoto" : idPhoto,
+            return .requestParameters(parameters: ["photo_id": idPhoto,
                                                    "idCollection": idCollection], encoding: JSONEncoding.default)
         case .getUserCollections:
             return .requestPlain

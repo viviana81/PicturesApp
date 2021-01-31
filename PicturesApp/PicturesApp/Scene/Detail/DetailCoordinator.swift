@@ -15,6 +15,7 @@ class DetailCoordinator: Coordinator {
     let detailViewController: DetailViewController
     let navigation: UINavigationController
     let services: Services
+    var listCollection: MyCollectionListViewController?
     
     init(navigation: UINavigationController, photo: Photo, services: Services) {
         self.navigation = navigation
@@ -32,44 +33,6 @@ class DetailCoordinator: Coordinator {
 
 extension DetailCoordinator: DetailViewControllerDelegate {
     
-    func getMyCollections() {
-        firstly {
-            getMe()
-        }.then { user in
-            self.getUserCollections(username: user.username)
-        }.done { collections in
-            self.detailViewController.collections = collections
-        }.catch { error in
-            
-        }
-    }
-        
-        func getMe() -> Promise<User> {
-            return Promise<User> { seal in
-                
-                services.getMe { (user, error) in
-                    if let user = user {
-                        seal.fulfill(user)
-                    } else if let error = error {
-                        seal.reject(error)
-                    }
-                }
-            }
-        }
-        
-        func getUserCollections(username: String) -> Promise<[Collection]> {
-            return Promise<[Collection]> { seal in
-                
-                services.getUserCollections(username: username) { (collections, error) in
-                    if let collections = collections {
-                        seal.fulfill(collections)
-                    } else if let error = error {
-                        seal.reject(error)
-                    }
-                }
-            }
-        }
-   
     func onTappedImage() {
         guard let url = URL(string: photo.urls.full) else { return }
         
@@ -104,6 +67,63 @@ extension DetailCoordinator: DetailViewControllerDelegate {
                 self?.detailViewController.addLike.setImage(UIImage(systemName: "heart.fill"), for: .normal)
             } else {
                 self?.detailViewController.showAlert(andMessage: "Non hai rimosso correttamente il tuo like a questa foto")
+            }
+        }
+    }
+    
+    func openCollections() {
+        listCollection = MyCollectionListViewController()
+        listCollection!.delegate = self
+        navigation.present(listCollection!, animated: true, completion: nil)
+    }
+}
+
+extension DetailCoordinator: MyCollectionListViewControllerDelegate {
+    
+    func getMyCollections() {
+        firstly {
+            getMe()
+        }.then { user in
+            self.getUserCollections(username: user.username)
+        }.done { collections in
+            self.listCollection?.collections = collections
+        }.catch { error in
+            self.listCollection?.showAlert(andMessage: error.localizedDescription)
+        }
+    }
+    
+    func getMe() -> Promise<User> {
+        return Promise<User> { seal in
+            
+            services.getMe { (user, error) in
+                if let user = user {
+                    seal.fulfill(user)
+                } else if let error = error {
+                    seal.reject(error)
+                }
+            }
+        }
+    }
+    
+    func getUserCollections(username: String) -> Promise<[Collection]> {
+        return Promise<[Collection]> { seal in
+            
+            services.getUserCollections(username: username) { (collections, error) in
+                if let collections = collections {
+                    seal.fulfill(collections)
+                } else if let error = error {
+                    seal.reject(error)
+                }
+            }
+        }
+    }
+
+    func addToCollection(_ collection: Collection) {
+        services.addPhotoToCollection(idPhoto: photo.id, idCollection: collection.id) { [weak self] res, _ in
+            if res {
+                self?.listCollection?.showAlert(andMessage: "Hai aggiunto correttamente la foto alla collezione")
+            } else {
+                self?.listCollection?.showAlert(andMessage: "La foto non è stata aggiunta correttamente")
             }
         }
     }

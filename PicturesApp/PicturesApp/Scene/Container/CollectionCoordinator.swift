@@ -88,7 +88,7 @@ extension CollectionCoordinator: MyCollectionViewControllerDelegate {
         }.done { collections in
             self.containerViewController.secondChild.collections = collections
         }.catch { error in
-            
+            self.containerViewController.secondChild.showAlert(andMessage: error.localizedDescription)
         }
     }
     

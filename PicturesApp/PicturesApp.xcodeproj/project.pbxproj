@@ -37,6 +37,9 @@
 		B96CA0C525B09985002D262A /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96CA0C425B09985002D262A /* AppCoordinator.swift */; };
 		B96CA0C825B09996002D262A /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96CA0C725B09996002D262A /* Coordinator.swift */; };
 		B96CA0CB25B09AFF002D262A /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96CA0CA25B09AFF002D262A /* HomeCoordinator.swift */; };
+		B98C4AE225C54EC500075EA7 /* MyCollectionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98C4AE025C54EC500075EA7 /* MyCollectionListViewController.swift */; };
+		B98C4AF525C5567900075EA7 /* MyCollectionListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98C4AF325C5567900075EA7 /* MyCollectionListTableViewCell.swift */; };
+		B98C4AF625C5567900075EA7 /* MyCollectionListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B98C4AF425C5567900075EA7 /* MyCollectionListTableViewCell.xib */; };
 		B9C63BE425B1F4E700C6F768 /* UIView+Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C63BE325B1F4E700C6F768 /* UIView+Pin.swift */; };
 		B9C63BEB25B4B2B600C6F768 /* TopicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C63BE925B4B2B600C6F768 /* TopicsViewController.swift */; };
 		B9C63BEC25B4B2B600C6F768 /* TopicsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9C63BEA25B4B2B600C6F768 /* TopicsViewController.xib */; };
@@ -97,6 +100,9 @@
 		B96CA0C425B09985002D262A /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		B96CA0C725B09996002D262A /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		B96CA0CA25B09AFF002D262A /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
+		B98C4AE025C54EC500075EA7 /* MyCollectionListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectionListViewController.swift; sourceTree = "<group>"; };
+		B98C4AF325C5567900075EA7 /* MyCollectionListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectionListTableViewCell.swift; sourceTree = "<group>"; };
+		B98C4AF425C5567900075EA7 /* MyCollectionListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyCollectionListTableViewCell.xib; sourceTree = "<group>"; };
 		B9C63BE325B1F4E700C6F768 /* UIView+Pin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Pin.swift"; sourceTree = "<group>"; };
 		B9C63BE925B4B2B600C6F768 /* TopicsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicsViewController.swift; sourceTree = "<group>"; };
 		B9C63BEA25B4B2B600C6F768 /* TopicsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopicsViewController.xib; sourceTree = "<group>"; };
@@ -295,6 +301,24 @@
 			path = Coordinators;
 			sourceTree = "<group>";
 		};
+		B98C4ADF25C54E9E00075EA7 /* MyCollectionList */ = {
+			isa = PBXGroup;
+			children = (
+				B98C4AF125C553E200075EA7 /* Cell */,
+				B98C4AE025C54EC500075EA7 /* MyCollectionListViewController.swift */,
+			);
+			path = MyCollectionList;
+			sourceTree = "<group>";
+		};
+		B98C4AF125C553E200075EA7 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				B98C4AF325C5567900075EA7 /* MyCollectionListTableViewCell.swift */,
+				B98C4AF425C5567900075EA7 /* MyCollectionListTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		B9C63BE225B1F4CE00C6F768 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -357,6 +381,7 @@
 		B9E457E825B74D5E0008EC52 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				B98C4ADF25C54E9E00075EA7 /* MyCollectionList */,
 				B9E457EF25B993720008EC52 /* ImageDetail */,
 				B9E457E925B74D7D0008EC52 /* DetailViewController.swift */,
 				B9E457EA25B74D7D0008EC52 /* DetailViewController.xib */,
@@ -512,6 +537,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B9C63BFD25B5841200C6F768 /* TopicsCollectionViewCell.xib in Resources */,
+				B98C4AF625C5567900075EA7 /* MyCollectionListTableViewCell.xib in Resources */,
 				B9E68FE225B041CA0028EAE5 /* LaunchScreen.storyboard in Resources */,
 				B96CA0A925B04C4B002D262A /* PhotoCollectionViewCell.xib in Resources */,
 				B9E457EC25B74D7D0008EC52 /* DetailViewController.xib in Resources */,
@@ -602,6 +628,7 @@
 				B9C63C0725B5EA1B00C6F768 /* UIColor.swift in Sources */,
 				B9E68FDA25B041C50028EAE5 /* HomeViewController.swift in Sources */,
 				B9E457E625B746880008EC52 /* UIViewController.swift in Sources */,
+				B98C4AE225C54EC500075EA7 /* MyCollectionListViewController.swift in Sources */,
 				B96CA0A825B04C4B002D262A /* PhotoCollectionViewCell.swift in Sources */,
 				B9E457E325B745710008EC52 /* UISearchBar.swift in Sources */,
 				B955638425C023640057ECB2 /* ContainerViewController.swift in Sources */,
@@ -627,6 +654,7 @@
 				B955636525BF1A7D0057ECB2 /* CollectionsViewController.swift in Sources */,
 				B9E68FD825B041C50028EAE5 /* SceneDelegate.swift in Sources */,
 				B955636A25BF1A8C0057ECB2 /* CollectionCoordinator.swift in Sources */,
+				B98C4AF525C5567900075EA7 /* MyCollectionListTableViewCell.swift in Sources */,
 				B9C63BF725B4B37400C6F768 /* SearchCoordinator.swift in Sources */,
 				B9C63BFC25B5841200C6F768 /* TopicsCollectionViewCell.swift in Sources */,
 				B96CA0AD25B04C70002D262A /* Reusable.swift in Sources */,
