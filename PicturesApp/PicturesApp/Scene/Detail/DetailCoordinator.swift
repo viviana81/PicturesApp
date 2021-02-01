@@ -13,12 +13,13 @@ class DetailCoordinator: Coordinator {
     var coordinators: [Coordinator] = []
     private let photo: Photo
     let detailViewController: DetailViewController
-    let navigation: UINavigationController
+    // let navigation: UINavigationController
+    private let presenter: UIViewController
     let services: Services
     var listCollection: MyCollectionListViewController?
     
-    init(navigation: UINavigationController, photo: Photo, services: Services) {
-        self.navigation = navigation
+    init(presenter: UIViewController, photo: Photo, services: Services) {
+        self.presenter = presenter
         self.photo = photo
         self.services = services
         detailViewController = DetailViewController(photo: photo)
@@ -27,7 +28,7 @@ class DetailCoordinator: Coordinator {
     
     func start() {
         detailViewController.delegate = self
-        navigation.pushViewController(detailViewController, animated: true)
+        presenter.present(detailViewController, animated: true, completion: nil)
     }
 }
 
@@ -74,7 +75,7 @@ extension DetailCoordinator: DetailViewControllerDelegate {
     func openCollections() {
         listCollection = MyCollectionListViewController()
         listCollection!.delegate = self
-        navigation.present(listCollection!, animated: true, completion: nil)
+        detailViewController.present(listCollection!, animated: true, completion: nil)
     }
 }
 

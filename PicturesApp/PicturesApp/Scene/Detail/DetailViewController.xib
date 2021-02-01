@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailViewController" customModule="PicturesApp" customModuleProvider="target">
             <connections>
+                <outlet property="addButton" destination="3Ty-Jt-ile" id="WEw-dw-MA6"/>
                 <outlet property="addLike" destination="9hW-hG-GQQ" id="oqU-70-3Dw"/>
                 <outlet property="dateLabel" destination="bfa-Hl-E6G" id="hst-8s-JpX"/>
                 <outlet property="descriptionLabel" destination="SgI-SX-rIq" id="LJL-yN-f8w"/>
@@ -137,6 +138,19 @@
                         <action selector="putLike" destination="-1" eventType="touchUpInside" id="Tma-Ff-H6r"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Ty-Jt-ile">
+                    <rect key="frame" x="30" y="827.5" width="354" height="26.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <inset key="titleEdgeInsets" minX="30" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <state key="normal" title="Add to collection">
+                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <imageReference key="image" image="tray.and.arrow.down.fill" catalog="system" symbolScale="large"/>
+                    </state>
+                    <connections>
+                        <action selector="openListCollection" destination="-1" eventType="touchUpInside" id="bJD-LO-Jp2"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -144,6 +158,7 @@
                 <constraint firstItem="ekg-be-X5t" firstAttribute="leading" secondItem="cqq-JY-HGl" secondAttribute="trailing" constant="8" id="2vI-BU-lrO"/>
                 <constraint firstItem="3sH-nc-oJJ" firstAttribute="leading" secondItem="DZb-Hc-Xtf" secondAttribute="trailing" constant="5" id="3Du-1J-qJF"/>
                 <constraint firstItem="tgY-2a-vny" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="3Ed-Dh-OGM"/>
+                <constraint firstItem="3Ty-Jt-ile" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="30" id="8KO-eZ-fvc"/>
                 <constraint firstItem="DZb-Hc-Xtf" firstAttribute="leading" secondItem="1XC-mN-y7e" secondAttribute="trailing" constant="34" id="8bB-dv-KwS"/>
                 <constraint firstItem="SgI-SX-rIq" firstAttribute="top" secondItem="GS8-vq-7nK" secondAttribute="bottom" constant="7.5" id="8wx-jd-bhr"/>
                 <constraint firstItem="tgY-2a-vny" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="AK8-mu-4jt"/>
@@ -161,6 +176,7 @@
                 <constraint firstItem="Nyz-Ac-QrU" firstAttribute="top" secondItem="DZb-Hc-Xtf" secondAttribute="bottom" constant="7.5" id="SJ4-89-OyY"/>
                 <constraint firstItem="9hW-hG-GQQ" firstAttribute="bottom" secondItem="tgY-2a-vny" secondAttribute="bottom" constant="-20" id="V7T-fv-yMc"/>
                 <constraint firstItem="cqq-JY-HGl" firstAttribute="top" secondItem="BjR-ZY-ic3" secondAttribute="bottom" constant="19" id="VsH-aU-iNE"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="3Ty-Jt-ile" secondAttribute="trailing" constant="30" id="Xai-L5-sgV"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="SgI-SX-rIq" secondAttribute="trailing" constant="16" id="Xvj-LS-2Ev"/>
                 <constraint firstItem="1XC-mN-y7e" firstAttribute="leading" secondItem="tgY-2a-vny" secondAttribute="leading" id="Y8y-1z-PBr"/>
                 <constraint firstItem="BjR-ZY-ic3" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="YyE-0e-Xin"/>
@@ -175,6 +191,7 @@
                 <constraint firstItem="Nyz-Ac-QrU" firstAttribute="leading" secondItem="DZb-Hc-Xtf" secondAttribute="leading" id="tvD-2Q-EUN"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="GS8-vq-7nK" secondAttribute="trailing" constant="16" id="ubN-rk-dg2"/>
                 <constraint firstItem="9Qz-oR-UUo" firstAttribute="leading" secondItem="BjR-ZY-ic3" secondAttribute="trailing" constant="8" id="yb3-Nc-5K9"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="3Ty-Jt-ile" secondAttribute="bottom" constant="8" id="zwK-e3-1pM"/>
             </constraints>
             <userDefinedRuntimeAttributes>
                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -189,6 +206,7 @@
         <image name="heart.fill" catalog="system" width="128" height="109"/>
         <image name="square.and.arrow.up.fill" catalog="system" width="115" height="128"/>
         <image name="square.on.square.squareshape.controlhandles" catalog="system" width="128" height="116"/>
+        <image name="tray.and.arrow.down.fill" catalog="system" width="128" height="114"/>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

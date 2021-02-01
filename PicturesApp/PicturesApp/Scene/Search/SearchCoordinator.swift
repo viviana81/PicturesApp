@@ -45,7 +45,8 @@ extension SearchCoordinator: SearchViewControllerDelegate {
     }
     
     func openDetail(searchedPhoto: Photo) {
-        let detail = DetailViewController(photo: searchedPhoto)
-        self.searchViewController.present(detail, animated: true, completion: nil)
+        let detailCoordinator = DetailCoordinator(presenter: searchViewController, photo: searchedPhoto, services: services)
+        detailCoordinator.start()
+        coordinators.append(detailCoordinator)
     }
 }

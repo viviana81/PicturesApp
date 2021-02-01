@@ -18,16 +18,16 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="zrt-ad-bYT">
-                        <rect key="frame" x="16" y="6" width="188" height="41"/>
+                        <rect key="frame" x="16" y="6" width="142" height="41"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Collection" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ni9-e3-eLw">
-                                <rect key="frame" x="0.0" y="0.0" width="188" height="19.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="142" height="19.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                 <color key="textColor" systemColor="systemPurpleColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eOw-TW-oKq">
-                                <rect key="frame" x="0.0" y="20.5" width="188" height="20.5"/>
+                                <rect key="frame" x="0.0" y="20.5" width="142" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" systemColor="systemPurpleColor"/>
                                 <nil key="highlightedColor"/>
@@ -37,18 +37,32 @@
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="4vo-yC-NWI">
                         <rect key="frame" x="0.0" y="61" width="220" height="139"/>
                     </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rbd-li-ae4">
+                        <rect key="frame" x="174" y="12" width="38" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="38" id="4zK-fX-IxW"/>
+                        </constraints>
+                        <color key="tintColor" systemColor="systemRedColor"/>
+                        <state key="normal" image="trash" catalog="system"/>
+                        <connections>
+                            <action selector="removeCollection:" destination="gTV-IL-0wX" eventType="touchUpInside" id="A8R-hY-qpo"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="Rbd-li-ae4" secondAttribute="trailing" constant="8" id="9Lf-zn-MnA"/>
                 <constraint firstAttribute="trailing" secondItem="4vo-yC-NWI" secondAttribute="trailing" id="Iqt-PC-rtt"/>
-                <constraint firstAttribute="trailing" secondItem="zrt-ad-bYT" secondAttribute="trailing" constant="16" id="JGP-y1-MCy"/>
+                <constraint firstItem="Rbd-li-ae4" firstAttribute="leading" secondItem="zrt-ad-bYT" secondAttribute="trailing" constant="16" id="OjE-vM-P0o"/>
                 <constraint firstItem="zrt-ad-bYT" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="R6R-y4-bkT"/>
                 <constraint firstItem="4vo-yC-NWI" firstAttribute="top" secondItem="zrt-ad-bYT" secondAttribute="bottom" constant="14" id="SKZ-fW-JQE"/>
                 <constraint firstAttribute="bottom" secondItem="4vo-yC-NWI" secondAttribute="bottom" id="fZO-iQ-0is"/>
                 <constraint firstItem="zrt-ad-bYT" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="6" id="lca-81-28B"/>
                 <constraint firstItem="4vo-yC-NWI" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="mXQ-5L-zLa"/>
+                <constraint firstItem="4vo-yC-NWI" firstAttribute="top" secondItem="Rbd-li-ae4" secondAttribute="bottom" constant="19" id="pze-Ty-MqH"/>
+                <constraint firstItem="Rbd-li-ae4" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="12" id="zL2-iw-XxC"/>
             </constraints>
             <size key="customSize" width="220" height="200"/>
             <userDefinedRuntimeAttributes>
@@ -58,6 +72,7 @@
             </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="coverImage" destination="4vo-yC-NWI" id="j4v-SK-iNX"/>
+                <outlet property="removeButton" destination="Rbd-li-ae4" id="979-tj-DfE"/>
                 <outlet property="titleCollection" destination="eOw-TW-oKq" id="ZwX-Tg-jT1"/>
             </connections>
             <point key="canvasLocation" x="-268.1159420289855" y="129.91071428571428"/>
@@ -65,8 +80,12 @@
     </objects>
     <resources>
         <image name="placeholder" width="256" height="256"/>
+        <image name="trash" catalog="system" width="121" height="128"/>
         <systemColor name="systemPurpleColor">
             <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

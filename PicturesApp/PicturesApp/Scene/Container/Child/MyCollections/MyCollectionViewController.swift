@@ -9,6 +9,8 @@ import UIKit
 
 protocol MyCollectionViewControllerDelegate: class {
     func getMyCollections()
+    func removeCollection(_ collection: Collection)
+    func onTapCollection(collection: Collection)
 }
 
 class MyCollectionViewController: UIViewController {
@@ -19,6 +21,7 @@ class MyCollectionViewController: UIViewController {
         let collection = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
         collection.register(FolderCollectionViewCell.self)
         collection.dataSource = self
+        collection.delegate = self
         collection.backgroundColor = .white
         return collection
     }()
@@ -63,7 +66,7 @@ class MyCollectionViewController: UIViewController {
     
 }
 
-extension MyCollectionViewController: UICollectionViewDataSource {
+extension MyCollectionViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return collections.count
     }
@@ -71,7 +74,16 @@ extension MyCollectionViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: FolderCollectionViewCell = folderCollection.dequeueReusableCell(for: indexPath)
         let collection = collections[indexPath.item]
-        cell.configure(withCollection: collection)
+        cell.configureUserFolder(withCollection: collection)
+        cell.onTapButton = { [weak self] in
+            self?.delegate?.removeCollection(collection)
+        }
         return cell
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let collection = collections[indexPath.item]
+        delegate?.onTapCollection(collection: collection)
+        
     }
 }

@@ -44,7 +44,7 @@ extension HomeCoordinator: HomeViewControllerDelegate {
     }
     
     func onPhotoTap(photo: Photo) {
-        let detailCoordinator = DetailCoordinator(navigation: navigation, photo: photo, services: services)
+        let detailCoordinator = DetailCoordinator(presenter: homeViewController, photo: photo, services: services)
         detailCoordinator.start()
         coordinators.append(detailCoordinator)
     }

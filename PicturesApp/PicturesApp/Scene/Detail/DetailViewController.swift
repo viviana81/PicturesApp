@@ -31,6 +31,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var likeLabel: UILabel!
     @IBOutlet weak var sizeLabel: UILabel!
     @IBOutlet weak var addLike: UIButton!
+    @IBOutlet weak var addButton: UIButton!
     
     weak var delegate: DetailViewControllerDelegate?
     private let photo: Photo
@@ -51,7 +52,6 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "tray.and.arrow.down"), style: .done, target: self, action: #selector(openListCollection))
         
         if let imageProfile = URL(string: photo.user?.imageProfile.small ?? "") {
             userImage.kf.setImage(with: imageProfile)
@@ -106,6 +106,7 @@ class DetailViewController: UIViewController {
             sizeLabel.textColor = UIColor.darkGray
             sizeImage.tintColor = UIColor.darkGray
             likeImage.tintColor = UIColor.darkGray
+            addButton.tintColor = UIColor.darkGray
         } else {
             descriptionLabel.textColor = UIColor.white
             userLabel.textColor = UIColor.white
@@ -117,6 +118,7 @@ class DetailViewController: UIViewController {
             sizeLabel.textColor = UIColor.white
             sizeImage.tintColor = UIColor.white
             likeImage.tintColor = UIColor.white
+            addButton.tintColor = UIColor.white
         }
         
         let imageTap = UITapGestureRecognizer(target: self, action: #selector(DetailViewController.onImageTap(_:)))
@@ -128,11 +130,10 @@ class DetailViewController: UIViewController {
         }
     }
     
-    @objc
-    func openListCollection() {
+    @IBAction func openListCollection() {
         delegate?.openCollections()
     }
-   
+
     @objc
     func onImageTap(_ recognizer: UIGestureRecognizer) {
         delegate?.onTappedImage()

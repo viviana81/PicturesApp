@@ -53,6 +53,10 @@ extension UICollectionView {
 
 extension UITableView {
     
+    func hideEmptyRows() {
+        self.tableFooterView = UIView(frame: .zero)
+    }
+    
     func register<T: UITableViewCell>(_: T.Type) where T: ReusableView {
         register(T.self, forCellReuseIdentifier: T.defaultReuseIdentifier)
     }

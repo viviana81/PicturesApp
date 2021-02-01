@@ -119,6 +119,7 @@ extension TopicsViewController: UICollectionViewDataSource, UICollectionViewDele
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // TODO: open different detail
         let photo = topics[indexPath.section].previewPhotos[indexPath.item]
         delegate?.openDetail(photo: photo)
     }

@@ -20,6 +20,7 @@ enum PicturesApi {
     case addCollection(title: String, description: String, privacy: Bool = false)
     case getUserCollections(username: String)
     case addPhotoToCollection(idPhoto: String, idCollection: String)
+    case deleteCollection(id: String)
 }
 
 extension PicturesApi: TargetType {
@@ -52,6 +53,8 @@ extension PicturesApi: TargetType {
             return "users/\(username)/collections"
         case .addPhotoToCollection(let idPhoto, let idCollection):
             return "collections/\(idCollection)/add"
+        case .deleteCollection(let id):
+            return "collections/\(id)"
         
         }
     }
@@ -62,7 +65,7 @@ extension PicturesApi: TargetType {
             return .get
         case .getToken, .likePhoto, .addCollection, .addPhotoToCollection:
             return .post
-        case .unlikePhoto:
+        case .unlikePhoto, .deleteCollection:
             return .delete
 
         }
@@ -84,7 +87,7 @@ extension PicturesApi: TargetType {
                                                    "client_secret": "G9nvKoXT14NqIrVdB7bsOtE5Gwd80zWoH-8jvOuR53A",
                                                    "redirect_uri": "picturesapp:",
                                                    "grant_type": "authorization_code"], encoding: URLEncoding.default)
-        case .likePhoto(let id), .unlikePhoto(let id):
+        case .likePhoto(let id), .unlikePhoto(let id), .deleteCollection(let id):
             return .requestParameters(parameters: ["id": id], encoding: URLEncoding.default)
         case .getMe, .getCollections:
             return .requestPlain

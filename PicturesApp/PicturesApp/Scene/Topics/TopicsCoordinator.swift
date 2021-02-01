@@ -44,7 +44,9 @@ extension TopicsCoordinator: TopicsViewControllerDelegate {
     }
     
     func openDetail(photo: Photo) {
-        let detail = DetailViewController(photo: photo)
-        self.topicsViewController.present(detail, animated: true, completion: nil)
+        let detailCoordinator = DetailCoordinator(presenter: topicsViewController, photo: photo, services: services)
+        detailCoordinator.start()
+        coordinators.append(detailCoordinator)
+       
     }
 }

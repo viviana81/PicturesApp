@@ -24,6 +24,8 @@ class MyCollectionListViewController: UIViewController {
         tableView.layer.cornerRadius = 10
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.hideEmptyRows()
+        tableView.backgroundColor = .lightGray
         return tableView
     }()
     
@@ -35,7 +37,7 @@ class MyCollectionListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.pin(to: view, insets: UIEdgeInsets(top: 200, left: 16, bottom: 0, right: 16))
+        tableView.pin(to: view, insets: UIEdgeInsets(top: 300, left: 24, bottom: 0, right: 24))
         delegate?.getMyCollections()
     }
 }

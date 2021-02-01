@@ -147,4 +147,15 @@ struct ApiServices: Services {
             }
         }
     }
+    
+    func deleteCollection(id: String, completion: @escaping (Bool, Error?) -> Void) {
+        provider.request(.deleteCollection(id: id)) { result in
+            switch result {
+            case .success:
+                completion(true, nil)
+            case .failure(let error):
+                completion(false, error)
+            }
+        }
+    }
 }

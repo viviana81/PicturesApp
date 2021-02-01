@@ -48,7 +48,7 @@ extension CollectionCoordinator: CollectionsViewControllerDelegate {
     func onCollectionTap(collection: Collection) {
         let collectionDetail = CollectionDetailViewController(collection: collection)
         collectionDetail.delegate = self
-        navigation.pushViewController(collectionDetail, animated: true)
+        containerViewController.firstChild.present(collectionDetail, animated: true, completion: nil)
     }
 }
 
@@ -79,6 +79,7 @@ extension CollectionCoordinator: AddCollectionViewControllerDelegate {
     }
 }
 extension CollectionCoordinator: MyCollectionViewControllerDelegate {
+    
     func getMyCollections() {
         
         firstly {
@@ -116,5 +117,21 @@ extension CollectionCoordinator: MyCollectionViewControllerDelegate {
                 }
             }
         }
+    }
+    
+    func removeCollection(_ collection: Collection) {
+        services.deleteCollection(id: collection.id) { [weak self] res, _ in
+            if res {
+                self?.containerViewController.secondChild.showAlert(andMessage: "Hai rimosso correttamente la tua collezione")
+            } else {
+                self?.containerViewController.secondChild.showAlert(andMessage: "Non hai rimosso la collezione")
+            }
+        }
+    }
+    
+    func onTapCollection(collection: Collection) {
+        let collectionDetail = CollectionDetailViewController(collection: collection)
+        collectionDetail.delegate = self
+        containerViewController.secondChild.present(collectionDetail, animated: true, completion: nil)
     }
 }
