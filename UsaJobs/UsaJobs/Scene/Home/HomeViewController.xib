@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="UsaJobs" customModuleProvider="target">
+            <connections>
+                <outlet property="filtersView" destination="Syt-Kh-0uI" id="AjJ-AQ-43Y"/>
+                <outlet property="jobsCollectionView" destination="xXy-4R-vtn" id="ln4-Md-IkY"/>
+                <outlet property="placeholder" destination="wU1-es-SfG" id="aca-0k-a0w"/>
+                <outlet property="searchLabel" destination="kLA-7i-6rD" id="oZc-KG-NtX"/>
+                <outlet property="view" destination="iN0-l3-epB" id="cm6-r8-gws"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Syt-Kh-0uI" customClass="FiltersView" customModule="UsaJobs" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="56" width="414" height="80"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="80" id="yQ4-E4-sWn"/>
+                    </constraints>
+                </view>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="xXy-4R-vtn">
+                    <rect key="frame" x="0.0" y="152" width="414" height="744"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="7vB-S9-qGO">
+                        <size key="itemSize" width="128" height="128"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="hb1-pQ-AhA"/>
+                        <outlet property="delegate" destination="-1" id="HXK-mb-GjY"/>
+                    </connections>
+                </collectionView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="desktopcomputer" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="wU1-es-SfG">
+                    <rect key="frame" x="82" y="399.5" width="250" height="249"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="250" id="OBl-Iv-yQa"/>
+                        <constraint firstAttribute="width" constant="250" id="gSS-uE-cBB"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search your job" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kLA-7i-6rD">
+                    <rect key="frame" x="20" y="363" width="374" height="24"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="Syt-Kh-0uI" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="7Er-Ck-adl"/>
+                <constraint firstItem="Syt-Kh-0uI" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="12" id="Awh-Cb-7x5"/>
+                <constraint firstItem="xXy-4R-vtn" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="CQ5-ea-7Vv"/>
+                <constraint firstItem="xXy-4R-vtn" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="CUK-r1-fx0"/>
+                <constraint firstItem="kLA-7i-6rD" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="IPI-8a-LkD"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="kLA-7i-6rD" secondAttribute="trailing" constant="20" id="R1x-gR-Zcu"/>
+                <constraint firstItem="wU1-es-SfG" firstAttribute="top" secondItem="kLA-7i-6rD" secondAttribute="bottom" constant="12" id="S3v-NS-UXA"/>
+                <constraint firstItem="Syt-Kh-0uI" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="VSM-od-Ihu"/>
+                <constraint firstItem="wU1-es-SfG" firstAttribute="centerX" secondItem="Syt-Kh-0uI" secondAttribute="centerX" id="YBo-Xr-TIG"/>
+                <constraint firstItem="wU1-es-SfG" firstAttribute="centerY" secondItem="xXy-4R-vtn" secondAttribute="centerY" id="nh8-vZ-dhp"/>
+                <constraint firstItem="xXy-4R-vtn" firstAttribute="top" secondItem="Syt-Kh-0uI" secondAttribute="bottom" constant="16" id="yGX-mo-AAP"/>
+                <constraint firstAttribute="bottom" secondItem="xXy-4R-vtn" secondAttribute="bottom" id="zZ5-Ju-o4U"/>
+            </constraints>
+            <point key="canvasLocation" x="18.840579710144929" y="103.79464285714285"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="desktopcomputer" catalog="system" width="128" height="101"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
